@@ -11,8 +11,12 @@
 // - note: paragraphs rendered after the block
 // Inline markup in strings: **bold**, *italic*, `code`.
 //
-// Figures: { src, alt, caption } for an image, or { diagram, caption }
+// Figures: { src, alt, caption } for an image, { video, poster, alt, caption }
+// for a screen recording in /public/videos (mp4 or webm, played on click only),
+// or { diagram, caption }
 // for a built-in diagram ('saturday-timeline' | 'session-count').
+// narrow: true caps the frame at 640px, for small screenshots that would
+// otherwise be upscaled and blur.
 
 const projects = [
   // ---------------------------------------------------------------------------
@@ -148,6 +152,8 @@ const projects = [
       'Saturday callback slots were opened by hand every week against a hard deadline, with one person at the head of the chain. I automated it end to end, then found the counting rule that was quietly closing slots.',
     stack: ['Make', 'Google Sheets API', 'REST API', 'Slack API'],
     links: { demo: '', code: '' },
+    // Home-page list thumbnail: the cover is a diagram, too dense to shrink.
+    thumb: { src: '/images/saturday-scenarios.png', width: 1355, height: 576 },
     cover: {
       diagram: 'saturday-timeline',
       caption:
@@ -304,6 +310,7 @@ const projects = [
     links: { demo: '', code: '' },
     cover: {
       src: '/images/wfm-sla30.png',
+      narrow: true,
       width: 760,
       height: 660,
       alt: 'The WFM Assistant in Slack answering a request for the definition of SLA30: what it measures, why it matters, the formula as callbacks made within 30 minutes divided by total leads to call back, and where it is used.',
@@ -380,6 +387,7 @@ const projects = [
         type: 'figure',
         figure: {
           src: '/images/wfm-refusal.png',
+      narrow: true,
       width: 784,
       height: 442,
           alt: 'The WFM Assistant in Slack replying that a term does not exist in the WFM dictionary and asking the user to ping the WFM team so it can be clarified and added.',
@@ -420,7 +428,7 @@ const projects = [
     slug: 'training-scheduling-engine',
     title: 'Training Scheduling Engine',
     year: '2026',
-    hero: false,
+    hero: true,
     order: 4,
     headline:
       'A scheduling engine that decides how many sessions to run, and explains every slot it turns down.',

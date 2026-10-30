@@ -1,5 +1,6 @@
-import '@fontsource-variable/source-serif-4';
-import '@fontsource-variable/inter';
+import '@fontsource-variable/literata/opsz.css';
+import '@fontsource-variable/literata/opsz-italic.css';
+import '@fontsource-variable/schibsted-grotesk';
 import './globals.css';
 import Link from 'next/link';
 import site from '../content/site';
@@ -16,7 +17,7 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#fafaf9',
+  themeColor: '#13233a',
 };
 
 export default function RootLayout({ children }) {
@@ -27,12 +28,12 @@ export default function RootLayout({ children }) {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <header className="wrap">
+        <header className="wrap band band-nav">
           <nav className="site-nav" aria-label="Main">
-            <Link className="home" href="/">
-              {site.name}
-            </Link>
             <ul>
+              <li>
+                <Link href="/#what-i-do">Services</Link>
+              </li>
               <li>
                 <Link href="/#work">Work</Link>
               </li>
@@ -42,13 +43,18 @@ export default function RootLayout({ children }) {
               <li>
                 <Link href="/#contact">Contact</Link>
               </li>
+              {site.cv && (
+                <li>
+                  <a href={site.cv}>CV</a>
+                </li>
+              )}
             </ul>
           </nav>
         </header>
         <main id="main" className="wrap">
           {children}
         </main>
-        <footer className="wrap">
+        <footer className="wrap band band-foot">
           <div className="site-footer">
             <span>
               {site.name}, {year}

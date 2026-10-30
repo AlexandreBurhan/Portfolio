@@ -1,0 +1,197 @@
+<!doctype html>
+<!--
+  Source of the public, web-safe CV served at /Alexandre-Burhan-CV.pdf.
+  Differs from the CV sent to employers: no phone number, client names
+  replaced by a generic description. Regenerate with:
+
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+    --no-pdf-header-footer --print-to-pdf=public/Alexandre-Burhan-CV.pdf \
+    "file://$PWD/cv/cv.html"
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alexandre Burhan - CV</title>
+<style>
+  @font-face {
+    font-family: 'Schibsted Grotesk';
+    src: url('../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-normal.woff2') format('woff2');
+    font-weight: 400 900;
+  }
+  @font-face {
+    font-family: 'Literata';
+    src: url('../node_modules/@fontsource-variable/literata/files/literata-latin-opsz-normal.woff2') format('woff2');
+    font-weight: 200 900;
+  }
+
+  @page { size: A4; margin: 10mm 13mm 9mm; }
+
+  :root {
+    --ink: #141a22;
+    --ink-2: #39424e;
+    --muted: #5a6370;
+    --rule: #cdd1d6;
+    --accent: #2f4b6e;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: 'Literata', Georgia, serif;
+    font-size: 8.75pt;
+    line-height: 1.3;
+    -webkit-print-color-adjust: exact;
+    zoom: 0.94;
+  }
+
+  header { margin-bottom: 6pt; }
+
+  h1 {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 22pt;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    margin: 0 0 5pt;
+  }
+
+  .role {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 8.4pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 4pt;
+  }
+
+  .contact {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 8.6pt;
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  .contact a { color: var(--ink-2); text-decoration: none; }
+  .sep { color: var(--rule); padding: 0 0.35em; }
+
+  h2 {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 8.4pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 0.75pt solid var(--ink);
+    padding-bottom: 2pt;
+    margin: 8pt 0 4.5pt;
+  }
+
+  p { margin: 0; }
+
+  .job { margin-bottom: 5pt; break-inside: avoid; }
+
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12pt;
+    font-family: 'Schibsted Grotesk', sans-serif;
+  }
+
+  .org { font-weight: 700; font-size: 10pt; letter-spacing: -0.01em; }
+  .org small { font-weight: 400; font-size: 8.6pt; color: var(--ink-2); letter-spacing: 0; }
+  .place, .dates { font-size: 8.6pt; color: var(--muted); white-space: nowrap; }
+  .title { font-style: italic; color: var(--ink-2); }
+
+  ul { margin: 2.5pt 0 0; padding-left: 11pt; }
+  li { margin-bottom: 0.8pt; }
+  li::marker { color: var(--accent); }
+
+  .skills p { margin-bottom: 2.5pt; }
+  .skills strong, .label {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 8.8pt;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Alexandre Burhan</h1>
+    <p class="role">Data analysis<span class="sep">|</span>Automation<span class="sep">|</span>Operations</p>
+    <p class="contact">
+      Barcelona, Spain (EU citizen), open to relocation<br><a href="mailto:alexandre.burhan@gmail.com">alexandre.burhan@gmail.com</a><span class="sep">|</span><a href="https://www.linkedin.com/in/alexandre-burhan-901007164/">linkedin.com/in/alexandre-burhan-901007164</a><span class="sep">|</span><a href="https://github.com/AlexandreBurhan">github.com/AlexandreBurhan</a>
+    </p>
+  </header>
+
+  <h2>Summary</h2>
+  <p>Operations and data analyst with 2 years of full-time experience in workforce management, pricing and BPO performance. Builds automation and AI tools for operations teams (Make, Google Apps Script, SQL, LLM APIs).</p>
+
+  <h2>Professional experience</h2>
+
+  <div class="job">
+    <div class="job-head"><span class="org">Papernest</span><span class="place">Barcelona, Spain</span></div>
+    <div class="job-head"><span class="title">Operations Analyst (Workforce Management &amp; Data)</span><span class="dates">Apr 2026 to present</span></div>
+    <ul>
+      <li>Own daily service performance (SLA, QoS, absenteeism) across 4 production sites and 7+ BPO partners; investigate deviations, drive corrective actions, and present weekly results to the Head of Operations and Site Directors.</li>
+      <li>Built an internal RAG copilot (Make, Notion, LLM API) answering the team's operational questions from a centralized WFM knowledge base, institutionalizing data governance, eliminating knowledge loss, and cutting onboarding ramp-up for new joiners.</li>
+      <li>Designed a Google Apps Script training-management platform (request form, approval workflow, shared calendar, database, dashboard) preventing concurrent training of agents from the same skill group, replacing manual tracking and directly protecting SLA and QoS commitments toward partners.</li>
+      <li>Developed a BPO auxiliary-time performance dashboard (SQL / BigQuery + Apps Script) ranking weekly worst offenders and tracking target attainment and trends per agent, creating fact-based vendor accountability and measurably improving BPO adherence.</li>
+      <li>Automated weekly appointment-slot opening via a Make workflow pushing data to an internal tool through a REST API (POST), eliminating recurring manual errors and missed openings.</li>
+      <li>Currently building a quantitative slot-sizing model (forecasting / machine learning) to replace heuristic capacity decisions with data-driven demand-to-slot dimensioning per time interval.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head"><span class="org">Barfield <small>(Air France KLM Engineering &amp; Maintenance)</small></span><span class="place">Miami, USA</span></div>
+    <div class="job-head"><span class="title">Data &amp; Pricing Analyst</span><span class="dates">Apr 2024 to Nov 2025</span></div>
+    <ul>
+      <li>Conducted pricing and cost analyses for repairable aircraft part numbers using historical work order data, Power BI dashboards, and Excel financial models.</li>
+      <li>Built an automated Excel costing template (VBA, Power Query) reducing pricing turnaround time by 50% per part number.</li>
+      <li>Contributed to strategic bids for airline and defence customers, 400+ units, contract values exceeding $10M over 3 years, presenting pricing strategy and revenue forecasts (&gt;$1M) to the CEO, CFO, and VPs of Sales and Customer.</li>
+      <li>Collaborated cross-functionally across three sites (Miami, Atlanta, Phoenix) to resolve data gaps and align stakeholders on costing assumptions.</li>
+      <li>Documented internal pricing processes, trained a new analyst, and structured the pricing database and automation tools for the new "Power by the Hour" service line.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head"><span class="org">Canal+ Group</span><span class="place">Paris, France</span></div>
+    <div class="job-head"><span class="title">Data Analyst Intern</span><span class="dates">Jul 2023 to Dec 2023</span></div>
+    <ul>
+      <li>Analyzed subscription lifecycle data for 50,000+ customers, identifying key churn drivers and at-risk segments.</li>
+      <li>Compared usage patterns between legacy and new offers, revealing 12% higher engagement on the new offer and influencing product strategy.</li>
+      <li>Delivered insights through Power BI dashboards and SQL queries supporting forecasting and H2 budgeting, improving revenue prediction accuracy by about 8%.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head"><span class="org">Strime</span><span class="place">Paris, France</span></div>
+    <div class="job-head"><span class="title">Project Manager Intern</span><span class="dates">Jan 2022 to Jul 2022</span></div>
+    <ul>
+      <li>Implemented Python automation scripts (BeautifulSoup, Selenium, Pandas, Google API) to onboard suppliers and monitor stock, improving sales by 15%.</li>
+      <li>Analyzed sales data and delivered recommendations to co-founders; optimized internal tooling (Confluence, HubSpot) to improve team performance.</li>
+    </ul>
+  </div>
+
+  <h2>Education and certifications</h2>
+
+  <div class="job">
+    <div class="job-head"><span class="org">EDHEC Business School</span><span class="place">Lille, France</span></div>
+    <div class="job-head"><span class="title">Master in Management &amp; MSc in Data Analytics and Artificial Intelligence</span><span class="dates">2019 to 2023</span></div>
+    <ul>
+      <li>Coursework: Statistics, Machine Learning, Data Mining, Analytics, Applied Mathematics, Computer Science.</li>
+    </ul>
+  </div>
+  <p><span class="label">LinkedIn Learning, 2025:</span> SQL Essential Training; SQL Practice: Intermediate Queries.</p>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <p><strong>Technical:</strong> Excel (Power Query), Power BI, SQL (BigQuery), Google Apps Script, Make (workflow automation), LLM APIs (RAG), Python (Pandas), Grafana, Notion</p>
+    <p><strong>Core competencies:</strong> Operations Analysis, Pricing Analysis, Capacity Planning, Forecasting, Process Improvement, Workflow Automation, KPI Reporting, Vendor &amp; BPO Management, Root-Cause Analysis, Stakeholder Management</p>
+    <p><strong>Languages:</strong> French (native), English (fluent, TOEIC 985/990), Spanish (B1), Bengali (spoken)</p>
+  </div>
+</body>
+</html>
