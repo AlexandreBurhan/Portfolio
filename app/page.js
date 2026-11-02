@@ -99,7 +99,7 @@ export default function Home() {
           </h2>
           <ul className="service-list">
             {site.services.map((service) => {
-              const project = service.project && projects.find((p) => p.slug === service.project);
+              const linked = (service.projects || []).map((slug) => projects.find((p) => p.slug === slug)).filter(Boolean);
               return (
                 <li key={service.title}>
                   <h3 className="service-title">{service.title}</h3>
@@ -109,11 +109,11 @@ export default function Home() {
                       <Separated items={service.tools} />
                     </p>
                   )}
-                  {project && (
-                    <Link className="service-link" href={`/projects/${project.slug}/`}>
+                  {linked.map((project) => (
+                    <Link key={project.slug} className="service-link" href={`/projects/${project.slug}/`}>
                       See it in {project.title}
                     </Link>
-                  )}
+                  ))}
                 </li>
               );
             })}

@@ -628,9 +628,13 @@ code {
 }
 
 .service-link {
-  margin-top: auto;
   padding-top: 6px;
   font-size: 17px;
+}
+
+/* A second linked project sits right under the first. */
+.service-link + .service-link {
+  padding-top: 2px;
 }
 
 @media (max-width: 760px) {

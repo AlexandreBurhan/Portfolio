@@ -43,7 +43,7 @@ Data Analyst, Operations Analyst and Automation roles. Site language: English.
   recurring theme and contact. Inside a band, colour tokens are redefined, so
   components need no dark variant.
 - "What I do" (`site.services`, nav "Services") is a two-column grid of white
-  tiles, each linked to the project that shows it. Keep each line factual
+  tiles, each linked to the projects that show it (`projects: [slugs]`). Keep each line factual
   and backed by a project or the CV.
 - Selected work: one white tile per project, screenshot on the left in a
   night-blue rounded mat, label, headline, summary and a "Read the case" pill on the
