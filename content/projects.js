@@ -301,7 +301,7 @@ const projects = [
     title: 'WFM Assistant',
     year: '2026',
     hero: true,
-    order: 3,
+    order: 4,
     headline:
       'A governed data dictionary, and a Slack assistant that is structurally unable to state an unvalidated definition.',
     summary:
@@ -429,7 +429,7 @@ const projects = [
     title: 'Training Scheduling Engine',
     year: '2026',
     hero: true,
-    order: 4,
+    order: 3,
     headline:
       'A scheduling engine that decides how many sessions to run, and explains every slot it turns down.',
     summary:
