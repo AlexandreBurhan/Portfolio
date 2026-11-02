@@ -31,7 +31,10 @@ Data Analyst, Operations Analyst and Automation roles. Site language: English.
   footer and screenshot mats, and one ink-blue accent (`--link`, 8.4:1) for
   links, the name, the disciplines, labels, service titles, the portrait ring
   and the one filled "See my work" button. Other buttons are outlined pills.
-  Light appearance only.
+  Light and dark modes: dark tokens under `:root[data-theme='dark']` in
+  `globals.css`, a sun/moon button at the end of the navigation
+  (`components/ThemeToggle.js`), the device setting by default, the visitor's
+  choice kept in localStorage.
 - Navigation: a sticky translucent night-blue bar (the only glass on the site),
   links centred, no name in it. Opaque under reduced transparency.
 - Hero: round portrait on the left, name, disciplines, tagline, short tool

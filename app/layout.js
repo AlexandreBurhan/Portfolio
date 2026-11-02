@@ -3,6 +3,7 @@ import './globals.css';
 import Link from 'next/link';
 import site from '../content/site';
 import Separated from '../components/Separated';
+import ThemeToggle from '../components/ThemeToggle';
 
 export const metadata = {
   title: {
@@ -18,10 +19,16 @@ export const viewport = {
   themeColor: '#13233a',
 };
 
+const THEME_SCRIPT = `try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){}`;
+
 export default function RootLayout({ children }) {
   const year = new Date().getFullYear();
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Sets the theme before the first paint: the saved choice, else the device setting. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
@@ -46,6 +53,9 @@ export default function RootLayout({ children }) {
                   <a href={asset(site.cv)}>CV</a>
                 </li>
               )}
+              <li>
+                <ThemeToggle />
+              </li>
             </ul>
           </nav>
         </header>
