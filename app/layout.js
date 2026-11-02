@@ -1,7 +1,4 @@
-import '@fontsource-variable/literata/opsz.css';
 import { asset } from '../components/asset';
-import '@fontsource-variable/literata/opsz-italic.css';
-import '@fontsource-variable/schibsted-grotesk';
 import './globals.css';
 import Link from 'next/link';
 import site from '../content/site';
@@ -18,7 +15,7 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#13233a',
+  themeColor: '#161617',
 };
 
 export default function RootLayout({ children }) {
@@ -29,8 +26,8 @@ export default function RootLayout({ children }) {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <header className="wrap band band-nav">
-          <nav className="site-nav" aria-label="Main">
+        <header className="global-nav">
+          <nav className="wrap site-nav" aria-label="Main">
             <ul>
               <li>
                 <Link href="/#what-i-do">Services</Link>
@@ -55,8 +52,8 @@ export default function RootLayout({ children }) {
         <main id="main" className="wrap">
           {children}
         </main>
-        <footer className="wrap band band-foot">
-          <div className="site-footer">
+        <footer className="site-foot">
+          <div className="wrap site-footer">
             <span>
               {site.name}, {year}
             </span>

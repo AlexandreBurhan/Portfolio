@@ -6,7 +6,8 @@ Data Analyst, Operations Analyst and Automation roles. Site language: English.
 ## Architecture
 
 - Next.js 15, `output: 'export'`. No API routes, server actions, middleware or
-  anything that needs a server. Hosting target: Vercel, repo root as project root.
+  anything that needs a server. Hosting: GitHub Pages under `/Portfolio/`, deployed by
+  `.github/workflows/deploy.yml`; local paths go through `components/asset.js`.
 - All copy lives in `content/site.js` and `content/projects.js`. Components hold
   no copy. Adding a project, an impact line, the CV or a demo link must be a
   content-only change.
@@ -14,46 +15,43 @@ Data Analyst, Operations Analyst and Automation roles. Site language: English.
   "Also built". Switching is a one-value change.
 - Empty `links.demo` / `links.code`, empty `impact`, empty `site.cv`: nothing
   renders. Never ship a dead button.
-- Fonts are self-hosted through `@fontsource-variable`. No Google Fonts calls.
+- No web fonts on the site, no Google Fonts calls. The `@fontsource-variable`
+  packages stay installed for the CV only.
 
-## Design: a museum with labels
+## Design: Apple-style, after the Human Interface Guidelines
 
-- Every project carries the same label: title in spaced capitals, then
-  `year | stack`, then the headline in bold grotesque. Always that order.
-- Two families: Schibsted Grotesk, bold and tightly tracked, for the name,
-  headlines and section titles, and at regular weight for labels, meta lines,
-  captions, navigation, tables and diagrams; Literata for body prose and pull
-  quotes. Inter, Space Grotesk and Source Serif 4 are out on purpose: they read
-  as template defaults.
-- Calm, professional palette: one pale blue paper (`--paper`) for every light
-  section, near-black ink, one ink-blue
-  accent used for links, the discipline line, the name in the hero, the
-  portrait ring and the one filled "See my work" button.
-- Hero: round portrait in an accent ring on the left, name, disciplines,
-  tagline, short tool list, experience line and the button on the right.
-  Navigation sits in a dark bar, links centred, no name in it. `--accent-text` for text
-  (contrast 8.4:1), `--accent` for marks.
-- Full-width night-blue bands (`.band`) alternate with the paper: the intro,
-  the recurring theme, contact and the footer. Projects, tools, credentials and
-  background stay on paper. Inside a band, colour tokens are redefined, so
+- Every project carries the same label: title, then `year | stack`, then the
+  headline in bold. Always that order.
+- One family: the system font (`-apple-system`, SF Pro on Apple devices,
+  Helvetica Neue or Arial elsewhere). No web fonts are loaded on the site.
+  Inter, Space Grotesk and Source Serif 4 stay out. The CV keeps its own
+  fonts (`cv/cv.html`).
+- Palette: white page, `#f5f5f7` grey tiles, near-black `#1d1d1f` ink and dark
+  tiles, one blue: `--link` for links, `--blue` for the one filled button
+  ("See my work"). Other buttons are outlined pills. Light and dark
+  appearance both come from the tokens in `globals.css`.
+- Navigation: a sticky translucent dark bar (the only glass on the site),
+  links centred, no name in it. Opaque under reduced transparency.
+- Hero: round portrait on the left, name, disciplines, tagline, short tool
+  list, experience line and the button on the right.
+- Dark rounded tiles (`.band`) hold the intro with the resume card, the
+  recurring theme and contact. Inside a band, colour tokens are redefined, so
   components need no dark variant.
-- "What I do" (`site.services`, nav "Services") lists kinds of work in two
-  columns, each linked to the project that shows it. Keep each line factual
+- "What I do" (`site.services`, nav "Services") is a two-column grid of grey
+  tiles, each linked to the project that shows it. Keep each line factual
   and backed by a project or the CV.
-- Home page lists projects as rows: screenshot left, label, headline, summary
-  and a "Read the case" button right. A project whose cover is a diagram names
-  a `thumb` image for its row, or, with no image at all, shows the diagram
-  itself in the row's mat. Contact is two columns: a line on the left, the
-  channels on the right.
-- Videos are screen recordings in `public/videos/`, with a poster image, played
-  on click only. Never autoplay.
-- No decorative motif. Projects on the home page are separated by a hairline
-  rule and space. The 48-bar day strip was removed on purpose: it read as a
-  generated flourish.
+- Selected work: one grey tile per project, screenshot on the left in a dark
+  rounded mat, label, headline, summary and a "Read the case" pill on the
+  right. A project whose cover is a diagram names a `thumb` image, or shows
+  the diagram itself in the mat. Contact is two columns.
+- Text links that lead somewhere carry Apple's chevron (CSS, not copy).
+- Videos are screen recordings in `public/videos/`, with a poster image,
+  played on click only. Never autoplay.
 - Banned: entry animations, scroll reveals, page transitions, custom cursor,
-  horizontal scroll, skill bars, logo walls, badges, drop shadows.
-  Exception: the "Education and certifications" list may show a small image
-  of each certificate next to its name, issuer and year (`site.credentials`).
+  horizontal scroll, skill bars, logo walls, badges, drop shadows, glass on
+  content. Exception: the "Education and certifications" list may show a
+  small image of each certificate next to its name, issuer and year
+  (`site.credentials`).
 - Diagrams are HTML components (`components/diagrams/`), not images, so they
   reflow at phone width.
 
