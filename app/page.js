@@ -125,9 +125,11 @@ export default function Home() {
         <h2 className="display-heading work-heading" id="work-heading">
           Selected work
         </h2>
-        {heroProjects.map((project) => (
-          <ProjectRow key={project.slug} project={project} />
-        ))}
+        <div className="project-track">
+          {heroProjects.map((project) => (
+            <ProjectRow key={project.slug} project={project} />
+          ))}
+        </div>
       </section>
 
       {secondaryProjects.length > 0 && (

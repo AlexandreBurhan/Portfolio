@@ -728,6 +728,43 @@ code {
   }
 }
 
+/* Phones: "What I do" and "Selected work" become Apple-style sliders. Cards
+   sit side by side and snap into place; the edge of the next card shows, so
+   the swipe needs no instruction. Native scrolling only, no script. */
+@media (max-width: 760px) {
+  .service-list,
+  .project-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 4px var(--gutter) 8px;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .service-list::-webkit-scrollbar,
+  .project-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-list li,
+  .project-track .project-row {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+  }
+
+  .project-track .project-row {
+    align-content: start;
+  }
+
+  .project-row + .project-row {
+    margin-top: 0;
+  }
+}
+
 /* The label: name, then year and stack. Same order everywhere. */
 .label-title {
   font-size: 17px;

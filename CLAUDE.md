@@ -53,7 +53,8 @@ Data Analyst, Operations Analyst and Automation roles. Site language: English.
 - Videos are screen recordings in `public/videos/`, with a poster image,
   played on click only. Never autoplay.
 - Banned: entry animations, scroll reveals, page transitions, custom cursor,
-  horizontal scroll, skill bars, logo walls, badges, drop shadows, glass on
+  horizontal scroll (except the phone sliders of "What I do" and
+  "Selected work", native scroll-snap, no script), skill bars, logo walls, badges, drop shadows, glass on
   content. Exception: the "Education and certifications" list may show a
   small image of each certificate next to its name, issuer and year
   (`site.credentials`).
