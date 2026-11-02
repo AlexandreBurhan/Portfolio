@@ -581,6 +581,121 @@ const projects = [
       },
     ],
   },
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'job-search-agent',
+    title: 'Job Search Agent',
+    year: '2026',
+    hero: true,
+    order: 5,
+    headline:
+      'A personal agent that finds job offers every morning, scores them against my CV, and fills in the application forms for me to review.',
+    summary:
+      'Applying well takes hours per offer: finding it, judging the fit, writing the letter, filling the form, remembering to follow up. I built a local tool that does the repetitive parts and leaves every decision and every send to me.',
+    stack: ['Python', 'Flask', 'Playwright', 'Gemini API', 'Claude API', 'JavaScript'],
+    links: { demo: '', code: '' },
+    cover: null,
+    impact: [],
+    sections: [
+      {
+        heading: 'Context',
+        type: 'prose',
+        body: [
+          'A job search is an operations problem: a daily inflow of items, a filter, a queue, a deadline for each follow-up, and a record of what came of it. I was doing all of it by hand across job boards, spreadsheets and my inbox, so I treated it the way I treat a manual process at work and built the system.',
+        ],
+      },
+      {
+        heading: 'What it does',
+        type: 'table',
+        columns: ['Step', 'How'],
+        rows: [
+          ['Collect', 'Every morning at 8:00: company career sites (Greenhouse, Lever, Ashby, Recruitee, SmartRecruiters), Workable, Indeed, LinkedIn public pages and remote job boards. Offers found outside the big boards are flagged as less crowded.'],
+          ['Filter', 'Duplicates, offers older than 7 days, off-target titles, too many years of experience required, remote offers closed to my country. For London, employers are checked against the UK register of licensed visa sponsors.'],
+          ['Score', 'A free local keyword match against my CV first, then an LLM (Gemini or Claude) scores each remaining offer out of 100 with fit, salary, contract, work mode, strengths and red flags.'],
+          ['Write', 'Cover letters on demand, from my CV only, rendered as PDF and checked for the exact job title and the posting terms my CV backs up.'],
+          ['Apply', 'One click opens the application page in a browser and fills identity, contact, CV, letter and standard questions. Fields are outlined by origin: green from my profile, orange drafted by the AI, red left for me.'],
+          ['Follow up', 'Application dates, reminders at 7 and 14 days, replies read from my mailbox (read-only) so a refusal or an interview invitation updates the record.'],
+        ],
+      },
+      {
+        heading: 'Design choices',
+        type: 'list',
+        items: [
+          '**Cheap checks before expensive ones.** Every rule that costs nothing runs before the LLM sees an offer, so the paid or rate-limited step only scores what is worth scoring.',
+          '**A person stays in the loop.** By default the agent fills the form and I submit it. LinkedIn and Indeed are never automated: for those offers it first looks for the same job on the company\'s own careers site.',
+          '**Answer once, reuse everywhere.** Recurring form questions (notice period, salary, right to work) are answered once in a dedicated page and reused in every form. A question it cannot answer is asked in a box next to the form, and the answer is kept for the next one.',
+          '**Show the origin of every answer.** After each application, a report lists every question with the answer sent and where it came from, so an AI-drafted answer is never sent without being visible.',
+          '**Everything stays on my machine.** Profile, keys, offers, letters and contacts are local files, kept out of the repository.',
+        ],
+      },
+      {
+        heading: 'Dashboard',
+        type: 'prose',
+        body: [
+          'A local web dashboard (Flask API and a single-file interface) answers one question each morning: what do I apply to today? It has a home briefing, the offers with filters, the applications with their follow-ups, a results page (reply rate, interviews, refusals by step) and the page of saved answers.',
+        ],
+      },
+      {
+        heading: 'What it does not do',
+        type: 'list',
+        items: [
+          'It does not solve CAPTCHAs or sign in for me: sites that need an account wait for me to sign in, then fill the page.',
+          'Scores are a first sort, not a decision. I still read every offer I apply to.',
+        ],
+      },
+    ],
+  },
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'formula-1-winners-prediction',
+    title: 'Formula 1 Winners Prediction',
+    year: '2025',
+    hero: true,
+    order: 6,
+    headline:
+      'Predicting Grand Prix winners of the hybrid era from public race data, where only one row in twenty is a winner.',
+    summary:
+      'I collected eight seasons of race, qualifying and standings data through APIs and scraping, built features that capture recent form, and compared classification models on a season they had never seen.',
+    stack: ['Python', 'pandas', 'scikit-learn', 'CatBoost', 'FastF1', 'BeautifulSoup'],
+    links: { demo: '', code: 'https://github.com/AlexandreBurhan/Formula-1-Winners-prediction' },
+    cover: null,
+    impact: [],
+    sections: [
+      {
+        heading: 'Context',
+        type: 'prose',
+        body: [
+          'One driver wins each race out of about twenty, so a model that always answers "does not win" is right 95% of the time and useless. The question is not accuracy but precision: when the model names a winner, how often is it right?',
+        ],
+      },
+      {
+        heading: 'Data',
+        type: 'list',
+        items: [
+          '**Race results, standings and circuits** for 2014 to 2021 from the Ergast API.',
+          '**Qualifying times and starting grids** scraped from Formula1.com.',
+          '**Session data** through the FastF1 library.',
+        ],
+      },
+      {
+        heading: 'Features',
+        type: 'list',
+        items: [
+          '**Grid position** and **qualifying gap** to the pole sitter, in seconds.',
+          '**Points and wins** accumulated by the driver before the race.',
+          '**Rolling averages over the last three races** for grid, qualifying gap and finishing position, to capture the recent form of driver and car.',
+        ],
+      },
+      {
+        heading: 'Method',
+        type: 'prose',
+        body: [
+          'The split is by time, not at random: seasons 2014 to 2020 to train, 2021 to test, so the model never sees the season it is judged on. I compared Random Forest, Gradient Boosting, AdaBoost, XGBoost and CatBoost, tuned with grid search, and judged them on precision and F1-score for the winner class.',
+          'Adding the rolling averages was the step that moved precision the most: recent form says more about the next race than career totals.',
+        ],
+      },
+    ],
+  },
 ];
 
 export const sortedProjects = [...projects].sort((a, b) => a.order - b.order);
