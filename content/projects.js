@@ -594,7 +594,13 @@ const projects = [
       'Applying well takes hours per offer: finding it, judging the fit, writing the letter, filling the form, remembering to follow up. I built a local tool that does the repetitive parts and leaves every decision and every send to me.',
     stack: ['Python', 'Flask', 'Playwright', 'Gemini API', 'Claude API', 'JavaScript'],
     links: { demo: '', code: '' },
-    cover: null,
+    cover: {
+      src: '/images/job-agent-offers.jpg',
+      width: 1600,
+      height: 1000,
+      alt: 'The offers page of the dashboard: a search bar, filters by status, score and date on the left, and offer cards with a match score, contract, work mode, salary and Details and Apply buttons.',
+      caption: 'The offers page, on demo data: every company and offer here is fictional. The interface is in French.',
+    },
     impact: [],
     sections: [
       {
@@ -629,11 +635,31 @@ const projects = [
         ],
       },
       {
+        type: 'figure',
+        figure: {
+          src: '/images/job-agent-offer.jpg',
+          width: 1600,
+          height: 1000,
+          alt: 'An offer opened in a side panel: score 88, salary, contract, work mode, required experience, right to work, a short summary, strengths for the role and points of attention.',
+          caption: 'An offer opened from the list: the score, the facts that decide whether to apply, and what the LLM found for and against the fit. Demo data.',
+        },
+      },
+      {
         heading: 'Dashboard',
         type: 'prose',
         body: [
           'A local web dashboard (Flask API and a single-file interface) answers one question each morning: what do I apply to today? It has a home briefing, the offers with filters, the applications with their follow-ups, a results page (reply rate, interviews, refusals by step) and the page of saved answers.',
         ],
+      },
+      {
+        type: 'figure',
+        figure: {
+          src: '/images/job-agent-today.jpg',
+          width: 1600,
+          height: 1000,
+          alt: 'The home page: a headline saying follow-ups are waiting, a button to prepare the follow-up, a to-do list with form questions to answer and two applications to follow up, then the best offers to review.',
+          caption: 'The home page: what to do today, follow-ups first. Demo data.',
+        },
       },
       {
         heading: 'What it does not do',
