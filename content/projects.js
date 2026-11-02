@@ -653,45 +653,79 @@ const projects = [
     hero: true,
     order: 6,
     headline:
-      'Predicting Grand Prix winners of the hybrid era from public race data, where only one row in twenty is a winner.',
+      'Predicting Grand Prix winners from pre-race data only, and measuring it against the rule any fan would use: the pole sitter wins.',
     summary:
-      'I collected eight seasons of race, qualifying and standings data through APIs and scraping, built features that capture recent form, and compared classification models on a season they had never seen.',
-    stack: ['Python', 'pandas', 'scikit-learn', 'CatBoost', 'FastF1', 'BeautifulSoup'],
+      'Eight seasons of race, qualifying and standings data, features limited to what is known before the start, and five models judged on a season they had never seen. The kept model calls 12 of the 22 races of 2021, one more than the pole sitter.',
+    stack: ['Python', 'pandas', 'scikit-learn', 'CatBoost', 'REST API'],
     links: { demo: '', code: 'https://github.com/AlexandreBurhan/Formula-1-Winners-prediction' },
-    cover: null,
+    cover: {
+      src: '/images/f1-feature-importance.png',
+      width: 1050,
+      height: 675,
+      alt: 'Bar chart of feature importance for the Random Forest model: grid position first, then qualifying gap, recent qualifying form and championship position, with finish rate last.',
+      caption: 'What the kept model relies on: one-lap pace and how it has evolved over the last races.',
+      narrow: true,
+    },
     impact: [],
     sections: [
       {
         heading: 'Context',
         type: 'prose',
         body: [
-          'One driver wins each race out of about twenty, so a model that always answers "does not win" is right 95% of the time and useless. The question is not accuracy but precision: when the model names a winner, how often is it right?',
+          'One driver wins each race out of about twenty, so a model that always answers "does not win" is right 95% of the time and useless. I judged models two ways: per driver, on precision and recall for the winner class, and per race, by taking the driver with the highest probability as the predicted winner and counting how many races it calls right.',
+          'The bar to clear is the simplest rule: the pole sitter wins. From 2014 to 2021 it was right in 53% of races.',
         ],
       },
       {
-        heading: 'Data',
-        type: 'list',
-        items: [
-          '**Race results, standings and circuits** for 2014 to 2021 from the Ergast API.',
-          '**Qualifying times and starting grids** scraped from Formula1.com.',
-          '**Session data** through the FastF1 library.',
-        ],
+        type: 'figure',
+        figure: {
+          src: '/images/f1-win-rate-by-grid.png',
+          width: 1200,
+          height: 600,
+          alt: 'Bar chart of the share of races won from each of the first ten grid slots, 2014 to 2021: about half from pole, falling steeply after.',
+          caption: 'Share of races won from each grid slot, 2014 to 2021.',
+          narrow: true,
+        },
       },
       {
-        heading: 'Features',
+        heading: 'Data and features',
         type: 'list',
         items: [
-          '**Grid position** and **qualifying gap** to the pole sitter, in seconds.',
-          '**Points and wins** accumulated by the driver before the race.',
-          '**Rolling averages over the last three races** for grid, qualifying gap and finishing position, to capture the recent form of driver and car.',
+          '**Race results, qualifying times and championship standings** for 2014 to 2021, from the Jolpica API (the successor of the closed Ergast API), cached on disk.',
+          '**Only what is known before the start**: grid position, qualifying gap to pole in percent, the standings published after the previous round, and the average grid, qualifying gap and finishing position over the driver\'s three previous races.',
+          '**Team form** instead of a hand-picked "top team" flag, which had been chosen by looking at the whole period, test season included.',
         ],
       },
       {
         heading: 'Method',
         type: 'prose',
         body: [
-          'The split is by time, not at random: seasons 2014 to 2020 to train, 2021 to test, so the model never sees the season it is judged on. I compared Random Forest, Gradient Boosting, AdaBoost, XGBoost and CatBoost, tuned with grid search, and judged them on precision and F1-score for the winner class.',
-          'Adding the rolling averages was the step that moved precision the most: recent form says more about the next race than career totals.',
+          'Seasons 2014 to 2020 to train, 2021 to test. Hyperparameters were tuned on past seasons only, with forward-in-time folds (train up to 2017, validate on 2018, and so on), and the model to keep was chosen on those folds, never on 2021. I compared logistic regression, Random Forest, Gradient Boosting, AdaBoost and CatBoost.',
+        ],
+      },
+      {
+        heading: 'Results on 2021',
+        type: 'table',
+        columns: ['Model', 'Races called', 'Precision', 'Recall'],
+        rows: [
+          ['Pole sitter wins (baseline)', '11 of 22', '', ''],
+          ['**Random Forest (kept)**', '**12 of 22**', '**0.75**', '0.27'],
+          ['CatBoost', '13 of 22', '0.59', '0.45'],
+          ['Logistic regression', '12 of 22', '0.62', '0.23'],
+          ['Gradient Boosting', '11 of 22', '0.64', '0.32'],
+        ],
+        note: [
+          'When the kept model gives a driver a probability of 0.5 or more, it is right three times out of four, but it only reaches that confidence for 6 of the 22 winners. CatBoost did better on 2021, but not on validation, so keeping it would have meant choosing on the test season.',
+        ],
+      },
+      {
+        heading: 'What I fixed',
+        type: 'list',
+        items: [
+          '**Leakage.** The first version used whether the driver finished the race, which is only known afterwards, and a win ratio computed over every season including the test one. Both inflated the results: the precision of 0.69 it reported does not hold once they are removed.',
+          '**Joins.** Qualifying times were joined on grid position, so a driver with a grid penalty got someone else\'s time. They are now joined by driver.',
+          '**Tuning on the test set.** Hyperparameters were picked by their score on 2021. They are now picked on past seasons.',
+          '**A notebook that runs.** The data source had closed, and several cells failed when run in order. It now runs end to end.',
         ],
       },
     ],
