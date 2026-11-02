@@ -108,7 +108,13 @@ const site = {
       // Redacted copy: birth date, QR code and signature removed.
       image: { src: '/images/credentials/edhec-msc-data-analytics.png', width: 640, height: 452 },
     },
-    { title: 'MSc in Management', issuer: 'EDHEC Business School', year: '2023' },
+    {
+      title: 'Master in Management (Grande École programme)',
+      issuer: 'EDHEC Business School',
+      year: '2023',
+      // Redacted copy: birth date and student number removed.
+      image: { src: '/images/credentials/edhec-master-in-management.png', width: 640, height: 480 },
+    },
     {
       title: 'SQL Practice: Intermediate Queries',
       issuer: 'LinkedIn Learning',
