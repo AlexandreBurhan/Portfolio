@@ -1411,3 +1411,80 @@ code {
     width: auto;
   }
 }
+
+/* ------------------------------------------------------------------
+   Interaction details (after Emil Kowalski's design-engineering notes).
+   Feedback on hover and press only: nothing animates on its own, so the
+   no-entry-animation rule still holds.
+   ------------------------------------------------------------------ */
+
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Headings break into even lines; paragraphs avoid a lone last word. */
+h1,
+h2,
+h3,
+.tagline,
+.lead {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+/* Years and figures line up. */
+.label-meta,
+.hero-tools,
+.tl-time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Buttons answer the press, and colour changes ease in. */
+.button {
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms var(--ease-out);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button.primary svg {
+  transition: transform 200ms var(--ease-out);
+}
+
+a {
+  transition: text-decoration-thickness 120ms ease, color 120ms ease;
+}
+
+.project-row .thumb {
+  transition: background-color 200ms ease;
+}
+
+/* Hover effects only where there is a real pointer: on touch screens a tap
+   would otherwise leave the hover state stuck. */
+@media (hover: hover) and (pointer: fine) {
+  .button.primary:hover svg {
+    transform: translateY(2px);
+  }
+}
+
+@media (hover: none) {
+  .project-row .thumb:hover {
+    background: var(--accent-mat);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button:active,
+  .button.primary:hover svg {
+    transform: none;
+  }
+}
