@@ -674,7 +674,9 @@ code {
   padding: clamp(10px, 1.6vw, 18px);
   background: var(--mat);
   border-radius: var(--radius-md);
-  transition: background-color 200ms ease;
+  transition:
+    background-color 200ms ease,
+    transform 300ms var(--ease-out);
 }
 
 .project-row .thumb img {
@@ -1482,6 +1484,7 @@ li {
 
   .project-row .thumb:hover {
     background: var(--mat-hover);
+    transform: scale(1.04);
   }
 
   .project-pager a:hover {
@@ -1490,6 +1493,7 @@ li {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .project-row .thumb:hover,
   .button:active,
   .button.primary:hover svg {
     transform: none;
