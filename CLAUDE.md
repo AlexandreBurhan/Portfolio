@@ -26,22 +26,24 @@ Data Analyst, Operations Analyst and Automation roles. Site language: English.
   Helvetica Neue or Arial elsewhere). No web fonts are loaded on the site.
   Inter, Space Grotesk and Source Serif 4 stay out. The CV keeps its own
   fonts (`cv/cv.html`).
-- Palette: white page, `#f5f5f7` grey tiles, near-black `#1d1d1f` ink and dark
-  tiles, one blue: `--link` for links, `--blue` for the one filled button
-  ("See my work"). Other buttons are outlined pills. Light and dark
-  appearance both come from the tokens in `globals.css`.
-- Navigation: a sticky translucent dark bar (the only glass on the site),
+- Palette (kept from the first design): one pale blue paper (`--page`), white
+  tiles, near-black ink, night blue `#13233a` for the bands, navigation,
+  footer and screenshot mats, and one ink-blue accent (`--link`, 8.4:1) for
+  links, the name, the disciplines, labels, service titles, the portrait ring
+  and the one filled "See my work" button. Other buttons are outlined pills.
+  Light appearance only.
+- Navigation: a sticky translucent night-blue bar (the only glass on the site),
   links centred, no name in it. Opaque under reduced transparency.
 - Hero: round portrait on the left, name, disciplines, tagline, short tool
   list, experience line and the button on the right.
-- Dark rounded tiles (`.band`) hold the intro with the resume card, the
+- Night-blue rounded tiles (`.band`) hold the intro with the resume card, the
   recurring theme and contact. Inside a band, colour tokens are redefined, so
   components need no dark variant.
-- "What I do" (`site.services`, nav "Services") is a two-column grid of grey
+- "What I do" (`site.services`, nav "Services") is a two-column grid of white
   tiles, each linked to the project that shows it. Keep each line factual
   and backed by a project or the CV.
-- Selected work: one grey tile per project, screenshot on the left in a dark
-  rounded mat, label, headline, summary and a "Read the case" pill on the
+- Selected work: one white tile per project, screenshot on the left in a
+  night-blue rounded mat, label, headline, summary and a "Read the case" pill on the
   right. A project whose cover is a diagram names a `thumb` image, or shows
   the diagram itself in the mat. Contact is two columns.
 - Text links that lead somewhere carry Apple's chevron (CSS, not copy).

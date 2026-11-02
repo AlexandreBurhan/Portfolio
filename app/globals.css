@@ -1,30 +1,31 @@
 /* ------------------------------------------------------------------
-   Apple-style system: one family (the system font), white page, soft
-   grey tiles, near-black tiles for the moments that matter, one blue for
-   links and the single filled button. Rounded corners, no shadows.
-   Light and dark appearance both come from the tokens below.
+   Apple-style structure (system font, rounded tiles, pills, glass bar)
+   on the site's own palette: pale blue paper, night blue, ink blue.
+   Rounded corners, no shadows.
    ------------------------------------------------------------------ */
 
 :root {
-  --page: #ffffff;
-  --tile: #f5f5f7;          /* grey tile on the white page */
-  --ink: #1d1d1f;           /* 16.8:1 on page */
-  --ink-2: #424245;         /* 10:1 on page */
-  --muted: #6e6e73;         /* 5.1:1 on page, 4.6:1 on tile */
-  --rule: #d2d2d7;
-  --link: #0066cc;          /* 5.6:1 on page, 5.1:1 on tile */
-  --blue: #0071e3;          /* filled button, white label 4.7:1 */
-  --blue-hover: #0077ed;
-  --mat: #1d1d1f;           /* the frame behind project screenshots */
-  --mat-hover: #2c2c2e;
-  --accent-wash: #e8f1fc;
-  --warn-text: #b3261e;
-  --warn-wash: #fcecea;
+  --page: #eef2f7;          /* one pale blue for the whole page */
+  --tile: #ffffff;          /* white tiles on the blue paper */
+  --ink: #141a22;
+  --ink-2: #39424e;
+  --muted: #56606d;         /* 5.6:1 on page */
+  --rule: #d5dce5;
+  --accent: #3d5a80;        /* ink blue: ring, marks, focus */
+  --link: #2f4b6e;          /* text in accent colour, 8.4:1 on page */
+  --blue: #2f4b6e;          /* the filled button, white label 9.5:1 */
+  --blue-hover: #1f3655;
+  --accent-soft: #c8d3e0;
+  --mat: #13233a;           /* night blue frame behind project screenshots */
+  --mat-hover: #1f3655;
+  --accent-wash: #edf1f6;
+  --warn-text: #a3362a;
+  --warn-wash: #f8e8e5;
   --cert-bg: #ffffff;
-  --code-bg: #e8e8ed;
+  --code-bg: #e2e8f0;
 
-  /* Dark tiles (intro, theme, contact) keep these in both appearances. */
-  --dark-tile: #1d1d1f;
+  /* Night-blue tiles (intro, theme, contact), navigation and footer. */
+  --dark-tile: #13233a;
 
   --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial,
     sans-serif;
@@ -40,26 +41,7 @@
   --nav-h: 48px;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page: #000000;
-    --tile: #161617;
-    --ink: #f5f5f7;
-    --ink-2: #d2d2d7;
-    --muted: #a1a1a6;       /* 8.4:1 on page, 7.4:1 on tile */
-    --rule: #424245;
-    --link: #2997ff;        /* 7.4:1 on page */
-    --mat: #000000;
-    --mat-hover: #2c2c2e;
-    --accent-wash: #0d2540;
-    --warn-text: #ff8a80;
-    --warn-wash: #3a1d1b;
-    --code-bg: #2c2c2e;
-    --dark-tile: #1d1d1f;
-  }
+  color-scheme: light;
 }
 
 *,
@@ -102,7 +84,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -112,8 +94,8 @@ strong {
 }
 
 ::selection {
-  background: #b3d7ff;
-  color: #1d1d1f;
+  background: var(--accent-soft);
+  color: var(--ink);
 }
 
 code {
@@ -159,20 +141,20 @@ code {
   position: sticky;
   top: 0;
   z-index: 9999;
-  background: rgba(22, 22, 23, 0.8);
+  background: rgba(19, 35, 58, 0.82);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .global-nav {
-    background: #161617;
+    background: #13233a;
   }
 }
 
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .global-nav {
-    background: #161617;
+    background: #13233a;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
@@ -200,7 +182,7 @@ code {
   padding: 14px 0;
   font-size: 14px;
   letter-spacing: -0.01em;
-  color: rgba(245, 245, 247, 0.8);
+  color: rgba(242, 245, 249, 0.82);
   text-decoration: none;
   transition: color 160ms ease;
 }
@@ -213,8 +195,7 @@ code {
 /* Footer: Apple's quiet grey strip, small type. */
 .site-foot {
   margin-top: var(--room-gap);
-  background: var(--tile);
-  border-top: 1px solid var(--rule);
+  background: var(--dark-tile);
 }
 
 .site-footer {
@@ -226,11 +207,11 @@ code {
   padding-bottom: 28px;
   font-size: 13px;
   letter-spacing: -0.01em;
-  color: var(--muted);
+  color: #a7b4c4;
 }
 
 .site-footer a {
-  color: var(--ink-2);
+  color: #cfd8e3;
 }
 
 /* ------------------------------------------------------------------
@@ -239,12 +220,14 @@ code {
    ------------------------------------------------------------------ */
 
 .band {
-  --ink: #f5f5f7;
-  --ink-2: #d2d2d7;
-  --muted: #a1a1a6;         /* 6.9:1 on the tile */
+  --ink: #f2f5f9;
+  --ink-2: #cfd8e3;
+  --muted: #a7b4c4;         /* 7.6:1 on the tile */
   --rule: rgba(255, 255, 255, 0.16);
-  --link: #2997ff;          /* 6.1:1 on the tile */
-  --tile: rgba(255, 255, 255, 0.07);
+  --link: #a9c6ea;          /* 9:1 on the tile */
+  --accent: #8fb0d8;
+  --accent-soft: #3b5677;
+  --tile: #1a2d47;
   background: var(--dark-tile);
   color: var(--ink);
   border-radius: var(--radius-lg);
@@ -252,8 +235,15 @@ code {
 }
 
 .band ::selection {
-  background: #2c4a6e;
-  color: #ffffff;
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+/* Inside a band, an outlined button fills with the light blue. */
+.band .button:hover {
+  background: var(--link);
+  border-color: var(--link);
+  color: var(--dark-tile);
 }
 
 .intro-band.has-resume {
@@ -341,10 +331,11 @@ code {
 }
 
 .portrait-ring {
-  width: min(100%, 380px);
+  width: min(100%, 400px);
   aspect-ratio: 1;
   border-radius: 50%;
-  overflow: hidden;
+  border: clamp(10px, 1.4vw, 16px) solid var(--accent);
+  padding: 4px;
   background: var(--tile);
 }
 
@@ -352,6 +343,7 @@ code {
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -360,7 +352,7 @@ code {
   font-size: clamp(48px, 8vw, 96px);
   line-height: 1.02;
   letter-spacing: -0.015em;
-  color: var(--ink);
+  color: var(--link);
   margin: 0 0 16px;
 }
 
@@ -368,8 +360,12 @@ code {
   font-size: clamp(19px, 1.8vw, 21px);
   font-weight: 600;
   letter-spacing: 0.011em;
-  color: var(--muted);
+  color: var(--link);
   margin: 0 0 20px;
+}
+
+.disciplines .sep {
+  color: var(--accent-soft);
 }
 
 .tagline {
@@ -506,6 +502,7 @@ code {
   font-size: 24px;
   line-height: 1.17;
   letter-spacing: 0.009em;
+  color: var(--link);
   margin: 0 0 10px;
 }
 
@@ -614,7 +611,7 @@ code {
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.022em;
-  color: var(--ink);
+  color: var(--link);
   margin: 0;
 }
 
@@ -948,7 +945,7 @@ code {
 }
 
 .section li::marker {
-  color: var(--muted);
+  color: var(--accent);
 }
 
 .section .after {
@@ -1089,7 +1086,7 @@ code {
 }
 
 .dg-box.accent {
-  border-color: var(--blue);
+  border-color: var(--accent);
   background: var(--accent-wash);
 }
 
@@ -1165,8 +1162,8 @@ code {
 }
 
 .tl-cut {
-  border-top: 2px solid var(--blue);
-  border-bottom: 2px solid var(--blue);
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
   padding: 10px 0;
   display: flex;
   flex-wrap: wrap;
@@ -1368,7 +1365,7 @@ li {
   }
 
   .project-pager a:hover {
-    background: var(--rule);
+    background: var(--accent-wash);
   }
 }
 
