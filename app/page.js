@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { asset } from '../components/asset';
 import site from '../content/site';
 import projects, { heroProjects, secondaryProjects } from '../content/projects';
 import Label from '../components/Label';
@@ -25,7 +26,7 @@ function ProjectRow({ project }) {
       {thumb && (
         <Link className="thumb" href={href} tabIndex={-1} aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={thumb.src} alt="" width={thumb.width} height={thumb.height} loading="lazy" decoding="async" />
+          <img src={asset(thumb.src)} alt="" width={thumb.width} height={thumb.height} loading="lazy" decoding="async" />
         </Link>
       )}
       <div className="row-body">
@@ -49,7 +50,7 @@ export default function Home() {
         {site.photo?.src && (
           <div className="portrait-ring">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="portrait" src={site.photo.src} alt={site.photo.alt} width="520" height="520" />
+            <img className="portrait" src={asset(site.photo.src)} alt={site.photo.alt} width="520" height="520" />
           </div>
         )}
         <div className="hero-text">
@@ -84,7 +85,7 @@ export default function Home() {
               {site.resume.heading}
             </h2>
             <p>{site.resume.body}</p>
-            <a className="button" href={site.cv}>
+            <a className="button" href={asset(site.cv)}>
               View resume
             </a>
           </aside>
@@ -193,7 +194,7 @@ export default function Home() {
               <li key={`${c.title}-${c.year}`} className={c.image ? '' : 'no-image'}>
                 {c.image && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={c.image.src} alt="" width={c.image.width} height={c.image.height} loading="lazy" decoding="async" />
+                  <img src={asset(c.image.src)} alt="" width={c.image.width} height={c.image.height} loading="lazy" decoding="async" />
                 )}
                 <div>
                   <p className="cred-title">{c.title}</p>

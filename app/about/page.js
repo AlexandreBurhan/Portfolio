@@ -1,4 +1,5 @@
 import site from '../../content/site';
+import { asset } from '../../components/asset';
 import Separated from '../../components/Separated';
 import { Paragraphs } from '../../components/RichText';
 
@@ -11,7 +12,7 @@ export default function About() {
       <Paragraphs items={site.about.body} />
       {site.cv && (
         <p>
-          <a className="button" href={site.cv}>
+          <a className="button" href={asset(site.cv)}>
             Download CV (PDF)
           </a>
         </p>

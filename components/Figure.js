@@ -1,4 +1,5 @@
 import SaturdayTimeline from './diagrams/SaturdayTimeline';
+import { asset } from './asset';
 import SessionCount from './diagrams/SessionCount';
 import { Inline } from './RichText';
 
@@ -23,18 +24,18 @@ export default function Figure({ figure, className = '' }) {
             controls
             playsInline
             preload="metadata"
-            poster={figure.poster}
+            poster={asset(figure.poster)}
             width={figure.width}
             height={figure.height}
             aria-label={figure.alt}
           >
-            <source src={figure.video} type={figure.video.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
+            <source src={asset(figure.video)} type={figure.video.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
           </video>
         ) : (
           // Static export: plain img, dimensions come from the file.
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={figure.src}
+            src={asset(figure.src)}
             alt={figure.alt}
             width={figure.width}
             height={figure.height}

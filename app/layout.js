@@ -1,4 +1,5 @@
 import '@fontsource-variable/literata/opsz.css';
+import { asset } from '../components/asset';
 import '@fontsource-variable/literata/opsz-italic.css';
 import '@fontsource-variable/schibsted-grotesk';
 import './globals.css';
@@ -45,7 +46,7 @@ export default function RootLayout({ children }) {
               </li>
               {site.cv && (
                 <li>
-                  <a href={site.cv}>CV</a>
+                  <a href={asset(site.cv)}>CV</a>
                 </li>
               )}
             </ul>
