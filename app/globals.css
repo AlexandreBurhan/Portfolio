@@ -14,7 +14,7 @@
   --accent-text: #2f4b6e;  /* text in accent colour, 8.4:1 on paper */
   --accent-soft: #c8d3e0;
   --accent-wash: #edf1f6;
-  --accent-mat: #d6e0ec;   /* the mat behind project screenshots */
+  --accent-mat: #13233a;   /* the mat behind project screenshots: band night blue */
   --warn-text: #a3362a;
   --warn-wash: #f8e8e5;
 
@@ -580,7 +580,7 @@ code {
   grid-template-columns: minmax(0, 1fr);
 }
 
-/* Each screenshot sits on a pale blue mat, like a framed print. */
+/* Each screenshot sits on a night-blue mat, like a framed print. */
 .project-row .thumb {
   display: block;
   padding: clamp(12px, 1.8vw, 22px);
@@ -614,7 +614,7 @@ code {
 }
 
 .project-row .thumb:hover {
-  background: var(--accent-soft);
+  background: #1f3655;
 }
 
 .project-row .headline {
