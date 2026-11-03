@@ -5,7 +5,7 @@ import projects, { heroProjects, secondaryProjects } from '../content/projects';
 import Label from '../components/Label';
 import { DIAGRAMS } from '../components/Figure';
 import Separated from '../components/Separated';
-import { Paragraphs } from '../components/RichText';
+import { Inline, Paragraphs } from '../components/RichText';
 import ZoomImage from '../components/ZoomImage';
 import ReadMore from '../components/ReadMore';
 
@@ -36,7 +36,17 @@ function ProjectRow({ project }) {
         <h3 className="headline" id={`row-${project.slug}`}>
           <Link href={href}>{project.headline}</Link>
         </h3>
-        <p className="summary">{project.summary}</p>
+        {project.impact?.length > 0 ? (
+          <ul className="results">
+            {project.impact.map((line, i) => (
+              <li key={i}>
+                <Inline text={line} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="summary">{project.summary}</p>
+        )}
         <Link className="button" href={href} aria-label={`Read the case: ${project.title}`}>
           Read the case
         </Link>
@@ -61,6 +71,14 @@ export default function Home() {
             <Separated items={site.disciplines} />
           </p>
           <p className="tagline">{site.tagline}</p>
+          {site.availability?.length > 0 && (
+            <p className="availability">
+              <span className="availability-dot" aria-hidden="true" />
+              <span>
+                <Separated items={site.availability} />
+              </span>
+            </p>
+          )}
           <p className="hero-tools">
             <Separated items={site.heroTools} />
           </p>
@@ -101,6 +119,17 @@ export default function Home() {
         )}
       </section>
 
+      <section className="rooms" id="work" aria-labelledby="work-heading">
+        <h2 className="display-heading work-heading" id="work-heading">
+          Selected work
+        </h2>
+        <ReadMore className="project-track" more={`Show all ${heroProjects.length} projects`} less="Show fewer">
+          {heroProjects.map((project) => (
+            <ProjectRow key={project.slug} project={project} />
+          ))}
+        </ReadMore>
+      </section>
+
       {site.services.length > 0 && (
         <section className="block services" id="what-i-do" aria-labelledby="services-heading">
           <h2 className="display-heading" id="services-heading">
@@ -130,16 +159,6 @@ export default function Home() {
         </section>
       )}
 
-      <section className="rooms" id="work" aria-labelledby="work-heading">
-        <h2 className="display-heading work-heading" id="work-heading">
-          Selected work
-        </h2>
-        <ReadMore className="project-track" more={`Show all ${heroProjects.length} projects`} less="Show fewer">
-          {heroProjects.map((project) => (
-            <ProjectRow key={project.slug} project={project} />
-          ))}
-        </ReadMore>
-      </section>
 
       {secondaryProjects.length > 0 && (
         <section className="block" aria-labelledby="also-heading">
@@ -200,8 +219,8 @@ export default function Home() {
           <h2 className="display-heading" id="cred-heading">
             Education and certifications
           </h2>
-          <ul className={`credentials${site.credentials.some((c) => c.image) ? ' has-images' : ''}`}>
-            {site.credentials.map((c) => (
+          <ul className={`credentials${site.credentials.some((c) => c.image && !c.minor) ? ' has-images' : ''}`}>
+            {site.credentials.filter((c) => !c.minor).map((c) => (
               <li key={`${c.title}-${c.year}`} className={c.image ? '' : 'no-image'}>
                 {c.image && (
                   <ZoomImage src={asset(c.image.src)} alt={`Certificate: ${c.title}`} width={c.image.width} height={c.image.height} />
@@ -220,6 +239,17 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          {site.credentials.some((c) => c.minor) && (
+            <p className="credentials-minor">
+              Also:{' '}
+              <Separated
+                items={site.credentials
+                  .filter((c) => c.minor)
+                  .map((c) => (c.link ? <a key={c.title} href={c.link}>{c.title}</a> : c.title))}
+              />{' '}
+              ({[...new Set(site.credentials.filter((c) => c.minor).map((c) => `${c.issuer}, ${c.year}`))].join('; ')})
+            </p>
+          )}
         </section>
       )}
 

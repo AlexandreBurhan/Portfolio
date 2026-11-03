@@ -11,8 +11,8 @@ import { usePathname, useRouter } from 'next/navigation';
 // follows the section in view.
 const TABS = [
   { id: 'home', label: 'Home', href: '/', icon: 'M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1z' },
-  { id: 'what-i-do', label: 'Services', href: '/#what-i-do', icon: 'M5 5h6v6H5zM13 5h6v6h-6zM5 13h6v6H5zM13 13h6v6h-6z' },
   { id: 'work', label: 'Work', href: '/#work', icon: 'M4 8h16v11H4zM9 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2' },
+  { id: 'what-i-do', label: 'Services', href: '/#what-i-do', icon: 'M5 5h6v6H5zM13 5h6v6h-6zM5 13h6v6H5zM13 13h6v6h-6z' },
   { id: 'about', label: 'About', href: '/about/', icon: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4.5 20a7.5 7.5 0 0 1 15 0' },
   { id: 'contact', label: 'Contact', href: '/#contact', icon: 'M4 6h16v12H4zM4 7l8 6 8-6' },
 ];
@@ -45,7 +45,7 @@ export default function MobileTabBar() {
       setActive(fixed);
       return undefined;
     }
-    const ids = ['what-i-do', 'work', 'contact'];
+    const ids = ['work', 'what-i-do', 'contact'];
     const onScroll = () => {
       if (Date.now() < lockSpy.current) return;
       const line = window.innerHeight * 0.4;

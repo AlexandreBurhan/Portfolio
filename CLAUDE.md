@@ -1,7 +1,7 @@
 # Working on this repository
 
-Alexandre Burhan's portfolio site. Audience: recruiters and hiring managers for
-Data Analyst, Operations Analyst and Automation roles. Site language: English.
+Alexandre Burhan's portfolio site. Audience: data managers hiring for Data Analyst,
+Operations Analyst and Automation roles (recruiters second). Site language: English.
 
 ## Architecture
 
@@ -108,7 +108,8 @@ purpose: the list itself must never be published.
 
 ## Waiting on Alexandre
 
-- Impact figures per project (until supplied, the impact block stays hidden)
+- More impact figures per project. The current `impact` lines only restate
+  numbers already written in each case study; never add one that is not.
 - BPO repo republished under `AlexandreBurhan`, then set its `links.code`
 - Fuller BPO demo dataset and regenerated screenshot
 - Slot-sizing model, fifth project

@@ -7,6 +7,12 @@ import ThemeToggle from '../components/ThemeToggle';
 import MobileTabBar from '../components/MobileTabBar';
 
 export const metadata = {
+  // Absolute base for the share image (Open Graph) on GitHub Pages.
+  metadataBase: new URL('https://alexandreburhan.github.io'),
+  openGraph: {
+    type: 'website',
+    siteName: site.name,
+  },
   title: {
     default: `${site.name} | ${site.disciplines.join(', ')}`,
     template: `%s | ${site.name}`,
@@ -39,10 +45,10 @@ export default function RootLayout({ children }) {
           <nav className="wrap site-nav" aria-label="Main">
             <ul>
               <li>
-                <Link href="/#what-i-do">Services</Link>
+                <Link href="/#work">Work</Link>
               </li>
               <li>
-                <Link href="/#work">Work</Link>
+                <Link href="/#what-i-do">Services</Link>
               </li>
               <li>
                 <Link href="/about/">About</Link>

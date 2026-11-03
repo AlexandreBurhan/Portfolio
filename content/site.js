@@ -7,8 +7,10 @@ const site = {
   // Hero line under the name, and the short tool list beside it.
   tagline: 'I build the tools a four-site contact centre operation runs on, and keep them running.',
   heroTools: ['SQL', 'BigQuery', 'Python', 'Make', 'Apps Script'],
+  // One line under the tagline: what I am looking for, where, and my right to work.
+  availability: ['Open to Data Analyst, Operations Analyst and Automation roles', 'Barcelona or relocation', 'EU citizen'],
   experience: [
-    '3 years across France, the United States and Spain',
+    '2 years full-time plus a year of internships, in France, the United States and Spain',
     'Canal+',
     'Air France KLM',
     'papernest',
@@ -62,7 +64,7 @@ const site = {
     },
     {
       title: 'AI assistants and agents',
-      body: 'LLM tools that take the repetitive part of a job and leave the decision to a person. One answers questions from validated definitions only. The other scores job offers and fills in forms for me to check.',
+      body: 'LLM tools that take the repetitive part of a job and leave the decision to a person. One answers questions from validated definitions only. The other collects job offers, scores them against my CV and tracks every application.',
       tools: ['LLM APIs', 'Notion', 'Make', 'Playwright'],
       projects: ['wfm-assistant', 'job-search-agent'],
     },
@@ -102,7 +104,8 @@ const site = {
   },
 
   // Degrees and certificates, one row each. Empty list: the section is hidden.
-  // { title, issuer, year, image?: { src, width, height }, link? }
+  // { title, issuer, year, image?: { src, width, height }, link?, minor? }
+  // minor: listed on one short line under the degrees instead of a full row.
   // image: a scan or screenshot of the certificate in /public/images/credentials.
   // Inspect each one first and mask birth dates, QR codes, signatures and
   // certificate IDs. Link only to verification pages that show nothing personal
@@ -126,6 +129,7 @@ const site = {
       title: 'SQL Practice: Intermediate Queries',
       issuer: 'LinkedIn Learning',
       year: '2025',
+      minor: true,
       image: { src: '/images/credentials/linkedin-sql-practice-intermediate-queries.png', width: 640, height: 482 },
       link: 'https://www.linkedin.com/learning/certificates/8dee49a362cbabd31e5c9a481e0a7ce71ef2a6b9f8549054087cb41c858c3c5c',
     },
@@ -133,6 +137,7 @@ const site = {
       title: 'SQL Essential Training',
       issuer: 'LinkedIn Learning',
       year: '2025',
+      minor: true,
       image: { src: '/images/credentials/linkedin-sql-essential-training.png', width: 640, height: 482 },
       link: 'https://www.linkedin.com/learning/certificates/7cf9845d383798a1e971e9e03dc475c27fbbfb7e7c022da00638ecf16d3802f9',
     },

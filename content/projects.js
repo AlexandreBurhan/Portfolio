@@ -22,11 +22,11 @@ const projects = [
   // ---------------------------------------------------------------------------
   {
     slug: "bpo-performance-console",
-    title: "BPO Performance Console",
+    title: "Partner Performance Console",
     year: "2026",
     hero: true,
     order: 1,
-    headline: "I rebuilt a partner performance review from the SQL up, and on the way found a pipeline that had been frozen for eight months.",
+    headline: "A partner performance console, rebuilt from the SQL up, that exposed a pipeline frozen for eight months.",
     summary: "My weekly reviews with outsourced partners ran on a generic dashboard that couldn't show who kept missing target. So I rebuilt the chain myself: the SQL extraction, a data layer made for this review, and a small web app on top.",
     stack: ["SQL", "BigQuery", "Apps Script", "JavaScript"],
     links: {
@@ -40,7 +40,11 @@ const projects = [
       alt: "Demo of the BPO Performance Console on synthetic data: five KPI cards with targets and trend lines, a ranking of agents off target, a multi-KPI profile, and a repeat-offenders table with weekly streak bars.",
       caption: "The console on synthetic demo data. Every name and figure in it is made up.",
     },
-    impact: [],
+    impact: [
+      "Found a source pipeline that had silently stopped updating **8 months** earlier",
+      "Caught my own aggregation error: **12.5%** shown against a real site figure of **8.2%**",
+      "Agent-level view of **5 KPIs** for outsourced partners in **3 countries**",
+    ],
     sections: [
       {
         heading: "Context",
@@ -149,11 +153,11 @@ const projects = [
   // ---------------------------------------------------------------------------
   {
     slug: "saturday-slots-automation",
-    title: "Saturday Slots Automation",
+    title: "Callback Slots Automation",
     year: "2026",
     hero: true,
-    order: 2,
-    headline: "I automated a weekly process that only worked when someone remembered it, and measured that one miscounted person closes eight customer slots.",
+    order: 3,
+    headline: "A fragile weekly process automated end to end, and a sensitivity test: one miscounted person costs eight slots.",
     summary: "Every week, Saturday callback slots were opened by hand against a hard deadline, with one person at the start of the chain. I automated it end to end, then found the counting rule that had been quietly closing slots.",
     stack: ["Make", "Google Sheets API", "REST API", "Slack API"],
     links: {
@@ -170,7 +174,11 @@ const projects = [
       diagram: "saturday-timeline",
       caption: "Everything has to finish before the 15:30 deadline. After that, slots can't be opened in time.",
     },
-    impact: [],
+    impact: [
+      "Measured the sizing model's sensitivity: **±1 person = ±8 customer slots**",
+      "Replaced a **7-step**, two-day manual loop (about **45 min a week**) and its single point of failure",
+      "Five checks must pass before slots are announced, with **almost 2 hours** left to react if one fails",
+    ],
     sections: [
       {
         heading: "Context",
@@ -303,11 +311,11 @@ const projects = [
   // ---------------------------------------------------------------------------
   {
     slug: "wfm-assistant",
-    title: "WFM Assistant",
+    title: "Metrics Dictionary & Assistant",
     year: "2026",
     hero: true,
-    order: 4,
-    headline: "A data dictionary where every definition has a status, and a Slack assistant that can only quote the ones that were checked.",
+    order: 2,
+    headline: "One agreed definition per metric, and a Slack assistant that only quotes validated ones.",
     summary: "The same metric was being calculated three different ways depending on who ran it. I built a dictionary in Notion where every entry carries a status, then an assistant on top that only ever sees the validated entries.",
     stack: ["Notion", "Make", "Google Gemini", "Slack API"],
     links: {
@@ -322,7 +330,11 @@ const projects = [
       alt: "The WFM Assistant in Slack answering a request for the definition of SLA30: what it measures, why it matters, the formula as callbacks made within 30 minutes divided by total leads to call back, and where it is used.",
       caption: "A definition with its formula and its reason, so two people compute it the same way.",
     },
-    impact: [],
+    impact: [
+      "About **55** governed entries (KPIs, skill groups, roles, tools), each with a validation status",
+      "Only validated definitions reach the model, filtered at sync time",
+      "No vector database needed at this size, with the switch to retrieval set at **300 to 400** entries",
+    ],
     sections: [
       {
         heading: "Context",
@@ -422,8 +434,8 @@ const projects = [
     title: "Training Scheduling Engine",
     year: "2026",
     hero: true,
-    order: 3,
-    headline: "A scheduling engine that works out how many sessions to run, and explains every slot it turns down.",
+    order: 5,
+    headline: "A scheduling engine that keeps training from emptying the phones, and explains every refusal.",
     summary: "Training requests came in by chat, by email and in person, and nothing stopped two sessions from taking the same skill group off the phones at once.",
     stack: ["Apps Script", "JavaScript", "Google Sheets", "Calendar API"],
     links: {
@@ -434,7 +446,11 @@ const projects = [
       diagram: "session-count",
       caption: "The mix of participants sets the number of sessions. The requested group size comes second.",
     },
-    impact: [],
+    impact: [
+      "One entry point for training requests covering **143 people**, **15 teams** and **4 sites**",
+      "Caps how many people from one skill group are away at once (**15%** by default)",
+      "A new indicator: the lag between a session ending and being declared",
+    ],
     sections: [
       {
         heading: "Context",
@@ -588,11 +604,11 @@ const projects = [
     title: 'Job Search Agent',
     year: '2026',
     hero: true,
-    order: 5,
+    order: 6,
     headline:
-      'An agent that finds job offers every morning, scores them against my CV and fills in the forms. I still press send.',
+      'My job search run as a data pipeline: collect, filter, score, then track what comes back.',
     summary:
-      "One good application used to cost me most of an evening. Find the offer, judge the fit, write the letter, fill the form, then remember to chase it two weeks later. Now the agent does the legwork on my laptop, and I make the calls.",
+      "Every morning it collects offers from a dozen sources, filters out what doesn't fit, scores the rest against my CV and keeps a record of every application. A results page shows the reply rate, interviews and refusals by stage, so I can see what works and aim better.",
     stack: ['Python', 'Flask', 'Playwright', 'Gemini API', 'Claude API', 'JavaScript'],
     links: { demo: '', code: '' },
     cover: {
@@ -602,7 +618,11 @@ const projects = [
       alt: 'The offers page of the dashboard: a search bar, filters by status, score and date on the left, and offer cards with a match score, contract, work mode, salary and Details and Apply buttons.',
       caption: 'The offers page, on demo data. Every company and offer here is made up, and the interface is in French.',
     },
-    impact: [],
+    impact: [
+      "Free rule-based filters run before any LLM call, so only offers worth scoring are scored",
+      "Replies read from the mailbox update each application on their own",
+      "Results page: reply rate, interviews, refusals by stage, by city and per week",
+    ],
     sections: [
       {
         heading: 'Why I built it',
@@ -617,8 +637,7 @@ const projects = [
         body: [
           "It wakes up at 8:00. First stop is the companies' own career sites on Greenhouse, Lever, Ashby, Recruitee and SmartRecruiters, then Workable, Indeed, LinkedIn's public pages and a few remote boards. Anything found away from LinkedIn and Indeed gets a \"less crowded\" tag.",
           "Most offers never reach the LLM. Duplicates go first. Then anything older than a week, titles that miss the target, roles asking for far more experience than I have, and remote jobs that only hire in countries where I can't work. London employers get checked against the Home Office register of licensed visa sponsors. What's left gets a keyword score against my CV, which costs nothing, and only then does Gemini or Claude read the offer and score it out of 100, with salary, contract, work mode and the points for and against.",
-          "When I pick one, a click opens the application page in Chrome and fills it in. Identity, contact details, CV, cover letter and the usual screening questions. Every field gets a colour, so I know what to check. Green came from my profile, orange was drafted by the AI, and red is left for me. LinkedIn and Indeed are off limits for automation, so for those the agent looks for the same job on the company's own site first. By default it stops before the submit button.",
-          "Forms ask the same things over and over. Notice period, expected salary, right to work. I answer each one once on a dedicated page and the agent reuses the answer everywhere. If it meets a question it has never seen, it asks me in a small box next to the form and keeps my answer for next time.",
+          "When I decide to apply, it opens the application page and pre-fills my contact details and CV, with each field marked by where its value came from. I read every form and submit it myself. LinkedIn and Indeed are never automated.",
         ],
       },
       {
@@ -653,7 +672,7 @@ const projects = [
         heading: 'The dashboard',
         type: 'prose',
         body: [
-          "Everything runs on my laptop, with a Flask API behind a single-page interface in plain JavaScript. The home page opens on what to do today, follow-ups first, and reminders come up 7 and 14 days after each application. Profile, API keys, offers, letters and contacts stay in local files and never go into the repository.",
+          "Everything runs on my laptop, with a Flask API behind a single-page interface in plain JavaScript. The home page opens on what to do today, follow-ups first, and reminders come up 7 and 14 days after each application. Profile, API keys, offers and contacts stay in local files and never go into the repository.",
         ],
       },
       {
@@ -681,8 +700,8 @@ const projects = [
     title: "Formula 1 Winners Prediction",
     year: "2025",
     hero: true,
-    order: 6,
-    headline: "I tried to predict Grand Prix winners from pre-race data only, and held the model to the rule every fan already uses: the pole sitter wins.",
+    order: 4,
+    headline: "Predicting Grand Prix winners from pre-race data, tested against the pole-sitter rule.",
     summary: "Eight seasons of race, qualifying and standings data, features limited to what's known before the lights go out, and five models tested on a season they'd never seen. The one I kept called 12 of the 22 races of 2021. The pole sitter called 11.",
     stack: ["Python", "pandas", "scikit-learn", "CatBoost", "REST API"],
     links: {
@@ -697,7 +716,11 @@ const projects = [
       caption: "What the kept model leans on. One-lap pace first, then how it has moved over the last few races.",
       narrow: true,
     },
-    impact: [],
+    impact: [
+      "Kept model called **12 of 22** races in 2021, against **11** for the pole-sitter rule",
+      "Precision **0.75** on the winner class, tuned on past seasons only",
+      "Found and removed leakage that had inflated my first version",
+    ],
     sections: [
       {
         heading: "Context",

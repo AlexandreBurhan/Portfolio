@@ -6,6 +6,7 @@ import Section from '../../../components/Section';
 import Separated from '../../../components/Separated';
 import { Inline } from '../../../components/RichText';
 import Fold from '../../../components/Fold';
+import { slugify } from '../../../components/slug';
 
 export const dynamicParams = false;
 
@@ -69,20 +70,42 @@ export default async function ProjectPage({ params }) {
         )}
       </header>
 
+      <aside className="brief" aria-label="In brief">
+        {project.impact?.length > 0 && (
+          <div className="brief-results">
+            <h2>In brief</h2>
+            <ul>
+              {project.impact.map((line, i) => (
+                <li key={i}>
+                  <Inline text={line} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <dl className="brief-meta">
+          <div>
+            <dt>Tools</dt>
+            <dd>{project.stack.join(', ')}</dd>
+          </div>
+          <div className="brief-toc">
+            <dt>On this page</dt>
+            <dd>
+              <ol>
+                {project.sections.filter((x) => x.heading).map((x) => (
+                  <li key={x.heading}>
+                    <a href={`#${slugify(x.heading)}`}>{x.heading}</a>
+                  </li>
+                ))}
+              </ol>
+            </dd>
+          </div>
+        </dl>
+      </aside>
+
       <Figure figure={project.cover} />
 
-      {project.impact && project.impact.length > 0 && (
-        <section className="section">
-          <h2>Impact</h2>
-          <ul>
-            {project.impact.map((line, i) => (
-              <li key={i}>
-                <Inline text={line} />
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+
 
       {groupSections(project.sections).map((group, g) =>
         // The first two groups stay open on phones; the rest fold under their heading.

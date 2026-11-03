@@ -1,5 +1,6 @@
 import { Inline, Paragraphs } from './RichText';
 import Figure from './Figure';
+import { slugify } from './slug';
 
 function Block({ section }) {
   switch (section.type) {
@@ -59,7 +60,7 @@ export default function Section({ section }) {
   }
 
   return (
-    <section className={section.heading ? 'section' : 'section cont'}>
+    <section className={section.heading ? 'section' : 'section cont'} id={section.heading ? slugify(section.heading) : undefined}>
       {section.heading && <h2>{section.heading}</h2>}
       <Paragraphs items={section.body} />
       <Block section={section} />
