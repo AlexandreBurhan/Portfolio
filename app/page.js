@@ -73,7 +73,6 @@ export default function Home() {
           <p className="tagline">{site.tagline}</p>
           {site.availability?.length > 0 && (
             <p className="availability">
-              <span className="availability-dot" aria-hidden="true" />
               <span className="only-wide">
                 <Separated items={site.availability} />
               </span>

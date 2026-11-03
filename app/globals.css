@@ -1977,15 +1977,6 @@ li {
   color: var(--ink);
 }
 
-.availability-dot {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #2e9e5b;
-  transform: translateY(-1px);
-}
-
 /* Results on a project card: the numbers first. */
 .results {
   list-style: none;
