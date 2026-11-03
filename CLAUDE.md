@@ -81,6 +81,17 @@ Operations Analyst and Automation roles (recruiters second). Site language: Engl
 - Separator inside a line: ` | ` via `components/Separated.js`.
 - Plain first person. No marketing adjectives.
 - Never present planned work as done. Never invent a number.
+- After the Apple Style Guide:
+  - Key points (`impact`) are parallel fragments that start with a past-tense
+    verb, begin with a capital and end without a period.
+  - Spell out an acronym the first time a page uses it: key performance
+    indicators (KPIs), large language model (LLM).
+  - Numbers: one to nine in words, numerals from 10, and numerals always for
+    time, percentages and measures (8 months, 45 minutes, 15%). Don't start a
+    sentence with a numeral. Ranges take an en dash (300–400).
+  - Serial comma before the last item of a list of three or more.
+  - No ampersand in running text, unless it is part of a name. No e.g., etc.,
+    i.e. or vs.: write for example, and so on, that is, versus.
 
 ## Confidentiality: hard rules
 

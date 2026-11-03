@@ -42,8 +42,8 @@ const projects = [
     },
     impact: [
       "Found a source pipeline that had silently stopped updating **8 months** earlier",
-      "Caught my own aggregation error: **12.5%** shown against a real site figure of **8.2%**",
-      "Agent-level view of **5 KPIs** for outsourced partners in **3 countries**",
+      "Caught my own aggregation error, which showed **12.5%** where the real site figure was **8.2%**",
+      "Built an agent-level view of **five** key performance indicators (KPIs) for outsourced partners in **three** countries",
     ],
     sections: [
       {
@@ -175,9 +175,9 @@ const projects = [
       caption: "Everything has to finish before the 15:30 deadline. After that, slots can't be opened in time.",
     },
     impact: [
-      "Measured the sizing model's sensitivity: **±1 person = ±8 customer slots**",
-      "Replaced a **7-step**, two-day manual loop (about **45 min a week**) and its single point of failure",
-      "Five checks must pass before slots are announced, with **almost 2 hours** left to react if one fails",
+      "Measured the sizing model's sensitivity: one person miscounted means **eight** customer slots lost",
+      "Replaced a **seven-step**, two-day manual process that took about **45 minutes** a week",
+      "Added five checks that must all pass before slots are announced, leaving almost **2 hours** to react",
     ],
     sections: [
       {
@@ -311,7 +311,7 @@ const projects = [
   // ---------------------------------------------------------------------------
   {
     slug: "wfm-assistant",
-    title: "Metrics Dictionary & Assistant",
+    title: "Metrics Dictionary and Assistant",
     year: "2026",
     hero: true,
     order: 2,
@@ -331,9 +331,9 @@ const projects = [
       caption: "A definition with its formula and its reason, so two people compute it the same way.",
     },
     impact: [
-      "About **55** governed entries (KPIs, skill groups, roles, tools), each with a validation status",
-      "Only validated definitions reach the model, filtered at sync time",
-      "No vector database needed at this size, with the switch to retrieval set at **300 to 400** entries",
+      "Governed about **55** entries (KPIs, skill groups, roles, and tools), each with a validation status",
+      "Filtered unvalidated definitions out at every sync, so they never reach the model",
+      "Skipped the vector database at this size, with the switch to retrieval set at **300–400** entries",
     ],
     sections: [
       {
@@ -436,7 +436,7 @@ const projects = [
     hero: true,
     order: 5,
     headline: "A scheduling engine that keeps training from emptying the phones, and explains every refusal.",
-    summary: "Training requests came in by chat, by email and in person, and nothing stopped two sessions from taking the same skill group off the phones at once.",
+    summary: "Training requests came in by chat, by email, and in person, and nothing stopped two sessions from taking the same skill group off the phones at once.",
     stack: ["Apps Script", "JavaScript", "Google Sheets", "Calendar API"],
     links: {
       demo: "",
@@ -447,9 +447,9 @@ const projects = [
       caption: "The mix of participants sets the number of sessions. The requested group size comes second.",
     },
     impact: [
-      "One entry point for training requests covering **143 people**, **15 teams** and **4 sites**",
-      "Caps how many people from one skill group are away at once (**15%** by default)",
-      "A new indicator: the lag between a session ending and being declared",
+      "Brought training requests for **143** people, **15** teams, and **four** sites into one entry point",
+      "Capped how many people from one skill group can be away at once (**15%** by default)",
+      "Created a new indicator: the lag between a session ending and being declared",
     ],
     sections: [
       {
@@ -608,7 +608,7 @@ const projects = [
     headline:
       'My job search run as a data pipeline: collect, filter, score, then track what comes back.',
     summary:
-      "Every morning it collects offers from a dozen sources, filters out what doesn't fit, scores the rest against my CV and keeps a record of every application. A results page shows the reply rate, interviews and refusals by stage, so I can see what works and aim better.",
+      "Every morning it collects offers from a dozen sources, filters out what doesn't fit, scores the rest against my CV, and keeps a record of every application. A results page shows the reply rate, interviews, and refusals by stage, so I can see what works and aim better.",
     stack: ['Python', 'Flask', 'Playwright', 'Gemini API', 'Claude API', 'JavaScript'],
     links: { demo: '', code: '' },
     cover: {
@@ -619,9 +619,9 @@ const projects = [
       caption: 'The offers page, on demo data. Every company and offer here is made up, and the interface is in French.',
     },
     impact: [
-      "Free rule-based filters run before any LLM call, so only offers worth scoring are scored",
-      "Replies read from the mailbox update each application on their own",
-      "Results page: reply rate, interviews, refusals by stage, by city and per week",
+      "Ran free rule-based filters before any large language model (LLM) call, so only offers worth scoring get scored",
+      "Updated each application automatically from replies read in the mailbox",
+      "Built a results page with reply rate, interviews, and refusals by stage, by city, and by week",
     ],
     sections: [
       {
@@ -702,7 +702,7 @@ const projects = [
     hero: true,
     order: 4,
     headline: "Predicting Grand Prix winners from pre-race data, tested against the pole-sitter rule.",
-    summary: "Eight seasons of race, qualifying and standings data, features limited to what's known before the lights go out, and five models tested on a season they'd never seen. The one I kept called 12 of the 22 races of 2021. The pole sitter called 11.",
+    summary: "Eight seasons of race, qualifying, and standings data, features limited to what's known before the lights go out, and five models tested on a season they'd never seen. The one I kept called 12 of the 22 races of 2021. The pole sitter called 11.",
     stack: ["Python", "pandas", "scikit-learn", "CatBoost", "REST API"],
     links: {
       demo: "",
@@ -717,9 +717,9 @@ const projects = [
       narrow: true,
     },
     impact: [
-      "Kept model called **12 of 22** races in 2021, against **11** for the pole-sitter rule",
-      "Precision **0.75** on the winner class, tuned on past seasons only",
-      "Found and removed leakage that had inflated my first version",
+      "Called **12 of 22** races in 2021 with the kept model, against **11** for the pole-sitter rule",
+      "Reached a precision of **0.75** on the winner class, with tuning on past seasons only",
+      "Found and removed the data leakage that had inflated my first version",
     ],
     sections: [
       {

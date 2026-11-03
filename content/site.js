@@ -8,12 +8,12 @@ const site = {
   tagline: 'I build the tools a four-site contact centre operation runs on, and keep them running.',
   heroTools: ['SQL', 'BigQuery', 'Python', 'Make', 'Apps Script'],
   // One line under the tagline: what I am looking for, where, and my right to work.
-  availability: ['Open to Data Analyst, Operations Analyst and Automation roles', 'Barcelona or relocation', 'EU citizen'],
+  availability: ['Open to Data Analyst, Operations Analyst, and Automation roles', 'Barcelona or relocation', 'EU citizen'],
   // Phone versions of the availability and experience lines.
-  availabilityShort: ['Open to Data & Ops Analyst roles', 'Barcelona or relocation', 'EU citizen'],
-  experienceShort: ['2 years full-time + internships', 'Canal+', 'Air France KLM', 'papernest'],
+  availabilityShort: ['Open to Data and Ops Analyst roles', 'Barcelona or relocation', 'EU citizen'],
+  experienceShort: ['Two years full-time, plus internships', 'Canal+', 'Air France KLM', 'papernest'],
   experience: [
-    '2 years full-time plus a year of internships, in France, the United States and Spain',
+    'Two years full-time, plus a year of internships, in France, the United States, and Spain',
     'Canal+',
     'Air France KLM',
     'papernest',
@@ -67,7 +67,7 @@ const site = {
     },
     {
       title: 'AI assistants and agents',
-      body: 'LLM tools that take the repetitive part of a job and leave the decision to a person. One answers questions from validated definitions only. The other collects job offers, scores them against my CV and tracks every application.',
+      body: 'Large language model (LLM) tools that take the repetitive part of a job and leave the decision to a person. One answers questions from validated definitions only. The other collects job offers, scores them against my CV, and tracks every application.',
       tools: ['LLM APIs', 'Notion', 'Make', 'Playwright'],
       projects: ['wfm-assistant', 'job-search-agent'],
     },
@@ -148,7 +148,7 @@ const site = {
 
   contact: {
     heading: 'Get in touch',
-    body: ["I'm looking for Data Analyst, Operations Analyst and Automation roles, in Barcelona or elsewhere."],
+    body: ["I'm looking for Data Analyst, Operations Analyst, and Automation roles, in Barcelona or elsewhere."],
   },
 
   about: {
@@ -158,7 +158,7 @@ const site = {
       'Before that I spent close to two years in Miami as a data and pricing analyst at Air France KLM Engineering & Maintenance, pricing aerospace repairs and presenting bids to the executive committee. Earlier, I analysed subscriber behaviour at Canal+ in Paris.',
       'I studied at EDHEC Business School, where I did the Master in Management (Grande École programme) and an MSc in Data Analytics & Artificial Intelligence.',
       'The work I enjoy most sits between the data and the floor. I check whether the numbers people decide on are true, then build whatever keeps them true.',
-      'French is my first language, my English is fluent and my Spanish intermediate. I live in Barcelona and I am open to relocating.',
+      'French is my first language, my English is fluent, and my Spanish is intermediate. I live in Barcelona and I am open to relocating.',
     ],
   },
 };
