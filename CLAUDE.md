@@ -65,8 +65,8 @@ Operations Analyst and Automation roles (recruiters second). Site language: Engl
 - Figures and certificate images open full screen on click
   (`components/ZoomImage.js`), growing from where they sit. These two, hover
   and press feedback are the only motion; all of it respects reduced motion.
-- Phones: pages scroll one way only. The first screen holds a small portrait
-  beside the name, the availability line and both buttons (short texts from
+- Phones: pages scroll one way only. The first screen is centred: a small portrait
+  above the name, the availability line and both buttons (short texts from
   `availabilityShort` / `experienceShort`). Work comes before the intro.
   Project cards read name, headline, first result, then a short image. What I
   do is a short list, Tools and Background are hidden, and case-study sections

@@ -2165,9 +2165,12 @@ li {
     display: block;
   }
 
-  /* First screen: small portrait beside the name, then the essentials. */
+  /* First screen: small portrait beside the name, then the essentials,
+     everything centred. */
   .hero.has-photo {
-    grid-template-columns: 84px minmax(0, 1fr);
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: 84px auto;
     column-gap: 16px;
     row-gap: 0;
     align-items: start;
@@ -2269,5 +2272,64 @@ li {
 
   .contact-list div {
     padding: 4px 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero h1 {
+    text-align: left;
+  }
+
+  .hero .tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero .availability {
+    justify-self: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
+/* Centred lines on phones: no separator bars, which would dangle at line
+   ends; items are spaced instead. */
+@media (max-width: 760px) {
+  .hero .availability .sep,
+  .hero .experience .sep {
+    display: none;
+  }
+
+  .hero .availability .sep-item,
+  .hero .experience .sep-item {
+    display: inline-block;
+    margin: 0 7px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero .experience > span:first-child {
+    display: block;
+    margin-bottom: 2px;
+  }
+}
+
+/* Phones: the whole hero is centred, portrait above the name. */
+@media (max-width: 760px) {
+  .hero.has-photo {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+
+  .hero h1 {
+    grid-column: 1;
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  .hero h1 ~ * {
+    grid-column: 1;
   }
 }
