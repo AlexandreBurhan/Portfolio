@@ -589,9 +589,9 @@ const projects = [
     hero: true,
     order: 5,
     headline:
-      'A personal agent that finds job offers every morning, scores them against my CV, and fills in the application forms for me to review.',
+      'An agent that finds job offers every morning, scores them against my CV and fills in the forms. I still press send.',
     summary:
-      'Applying well takes hours per offer: finding it, judging the fit, writing the letter, filling the form, remembering to follow up. I built a local tool that does the repetitive parts and leaves every decision and every send to me.',
+      "One good application used to cost me most of an evening. Find the offer, judge the fit, write the letter, fill the form, then remember to chase it two weeks later. Now the agent does the legwork on my laptop, and I make the calls.",
     stack: ['Python', 'Flask', 'Playwright', 'Gemini API', 'Claude API', 'JavaScript'],
     links: { demo: '', code: '' },
     cover: {
@@ -599,39 +599,25 @@ const projects = [
       width: 1600,
       height: 1000,
       alt: 'The offers page of the dashboard: a search bar, filters by status, score and date on the left, and offer cards with a match score, contract, work mode, salary and Details and Apply buttons.',
-      caption: 'The offers page, on demo data: every company and offer here is fictional. The interface is in French.',
+      caption: 'The offers page, on demo data. Every company and offer here is made up, and the interface is in French.',
     },
     impact: [],
     sections: [
       {
-        heading: 'Context',
+        heading: 'Why I built it',
         type: 'prose',
         body: [
-          'A job search is an operations problem: a daily inflow of items, a filter, a queue, a deadline for each follow-up, and a record of what came of it. I was doing all of it by hand across job boards, spreadsheets and my inbox, so I treated it the way I treat a manual process at work and built the system.',
+          "At work I spend my days on processes shaped like this. Items come in every day, most get filtered out, the rest wait in a queue, and each one has a follow-up date somebody has to remember. My job search had exactly that shape. I was running it by hand across a handful of job boards, a spreadsheet and my inbox, so I built it the way I'd build a tool for my team.",
         ],
       },
       {
-        heading: 'What it does',
-        type: 'table',
-        columns: ['Step', 'How'],
-        rows: [
-          ['Collect', 'Every morning at 8:00: company career sites (Greenhouse, Lever, Ashby, Recruitee, SmartRecruiters), Workable, Indeed, LinkedIn public pages and remote job boards. Offers found outside the big boards are flagged as less crowded.'],
-          ['Filter', 'Duplicates, offers older than 7 days, off-target titles, too many years of experience required, remote offers closed to my country. For London, employers are checked against the UK register of licensed visa sponsors.'],
-          ['Score', 'A free local keyword match against my CV first, then an LLM (Gemini or Claude) scores each remaining offer out of 100 with fit, salary, contract, work mode, strengths and red flags.'],
-          ['Write', 'Cover letters on demand, from my CV only, rendered as PDF and checked for the exact job title and the posting terms my CV backs up.'],
-          ['Apply', 'One click opens the application page in a browser and fills identity, contact, CV, letter and standard questions. Fields are outlined by origin: green from my profile, orange drafted by the AI, red left for me.'],
-          ['Follow up', 'Application dates, reminders at 7 and 14 days, replies read from my mailbox (read-only) so a refusal or an interview invitation updates the record.'],
-        ],
-      },
-      {
-        heading: 'Design choices',
-        type: 'list',
-        items: [
-          '**Cheap checks before expensive ones.** Every rule that costs nothing runs before the LLM sees an offer, so the paid or rate-limited step only scores what is worth scoring.',
-          '**A person stays in the loop.** By default the agent fills the form and I submit it. LinkedIn and Indeed are never automated: for those offers it first looks for the same job on the company\'s own careers site.',
-          '**Answer once, reuse everywhere.** Recurring form questions (notice period, salary, right to work) are answered once in a dedicated page and reused in every form. A question it cannot answer is asked in a box next to the form, and the answer is kept for the next one.',
-          '**Show the origin of every answer.** After each application, a report lists every question with the answer sent and where it came from, so an AI-drafted answer is never sent without being visible.',
-          '**Everything stays on my machine.** Profile, keys, offers, letters and contacts are local files, kept out of the repository.',
+        heading: 'How it works',
+        type: 'prose',
+        body: [
+          "It wakes up at 8:00. First stop is the companies' own career sites on Greenhouse, Lever, Ashby, Recruitee and SmartRecruiters, then Workable, Indeed, LinkedIn's public pages and a few remote boards. Anything found away from LinkedIn and Indeed gets a \"less crowded\" tag.",
+          "Most offers never reach the LLM. Duplicates go first. Then anything older than a week, titles that miss the target, roles asking for far more experience than I have, and remote jobs that only hire in countries where I can't work. London employers get checked against the Home Office register of licensed visa sponsors. What's left gets a keyword score against my CV, which costs nothing, and only then does Gemini or Claude read the offer and score it out of 100, with salary, contract, work mode and the points for and against.",
+          "When I pick one, a click opens the application page in Chrome and fills it in. Identity, contact details, CV, cover letter and the usual screening questions. Every field gets a colour, so I know what to check. Green came from my profile, orange was drafted by the AI, and red is left for me. LinkedIn and Indeed are off limits for automation, so for those the agent looks for the same job on the company's own site first. By default it stops before the submit button.",
+          "Forms ask the same things over and over. Notice period, expected salary, right to work. I answer each one once on a dedicated page and the agent reuses the answer everywhere. If it meets a question it has never seen, it asks me in a small box next to the form and keeps my answer for next time.",
         ],
       },
       {
@@ -641,14 +627,22 @@ const projects = [
           width: 1600,
           height: 1000,
           alt: 'An offer opened in a side panel: score 88, salary, contract, work mode, required experience, right to work, a short summary, strengths for the role and points of attention.',
-          caption: 'An offer opened from the list: the score, the facts that decide whether to apply, and what the LLM found for and against the fit. Demo data.',
+          caption: 'One offer opened from the list, with its score, the facts that decide whether to apply, and what the model found for and against. Demo data.',
         },
       },
       {
-        heading: 'Dashboard',
+        heading: 'Tracking what comes back',
         type: 'prose',
         body: [
-          'A local web dashboard (Flask API and a single-file interface) answers one question each morning: what do I apply to today? It has a home briefing, the offers with filters, the applications with their follow-ups, a results page (reply rate, interviews, refusals by step) and the page of saved answers.',
+          "Sending applications was half the problem. I also wanted to know which ones worked. So the agent reads my mailbox, read-only, and updates each application on its own. A refusal gets logged with its date and the stage it came at. An interview invitation jumps to the top of the home page.",
+          "A results page adds it all up. Applications sent, reply rate, interviews, refusals, the ones still silent after three weeks, and the median salary I asked for. Under those sit the funnel from sent to interview, refusals by stage, a breakdown by city and a weekly count. If one city answers twice as often as another, this is where I see it, and where I decide what to aim at next week.",
+        ],
+      },
+      {
+        heading: 'The dashboard',
+        type: 'prose',
+        body: [
+          "Everything runs on my laptop, with a Flask API behind a single-page interface in plain JavaScript. The home page opens on what to do today, follow-ups first, and reminders come up 7 and 14 days after each application. Profile, API keys, offers, letters and contacts stay in local files and never go into the repository.",
         ],
       },
       {
@@ -658,15 +652,14 @@ const projects = [
           width: 1600,
           height: 1000,
           alt: 'The home page: a headline saying follow-ups are waiting, a button to prepare the follow-up, a to-do list with form questions to answer and two applications to follow up, then the best offers to review.',
-          caption: 'The home page: what to do today, follow-ups first. Demo data.',
+          caption: 'The home page on a Monday morning. Follow-ups first. Demo data.',
         },
       },
       {
-        heading: 'What it does not do',
-        type: 'list',
-        items: [
-          'It does not solve CAPTCHAs or sign in for me: sites that need an account wait for me to sign in, then fill the page.',
-          'Scores are a first sort, not a decision. I still read every offer I apply to.',
+        heading: 'Limits',
+        type: 'prose',
+        body: [
+          "It won't solve a CAPTCHA and it won't sign in for me. On Workday or Taleo I log in myself, then let it fill the page. The score is a first sort, and I still read every offer before I apply.",
         ],
       },
     ],
