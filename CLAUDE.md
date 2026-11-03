@@ -59,7 +59,8 @@ Data Analyst, Operations Analyst and Automation roles. Site language: English.
   small image of each certificate next to its name, issuer and year
   (`site.credentials`).
 - Phones get an iOS-style tab bar at the bottom (`components/MobileTabBar.js`):
-  floating glass, a highlight that slides to the active tab, the tab following
+  floating glass, a highlight that slides to the active tab or follows a finger
+  dragged along the bar, the tab following
   the section in view on the home page. It replaces the top links on phones;
   the top keeps only the light / dark switch.
 - Figures and certificate images open full screen on click
