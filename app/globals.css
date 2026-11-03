@@ -2150,3 +2150,148 @@ li {
     display: none;
   }
 }
+
+
+/* ------------------------------------------------------------------
+   Phones, round two: the first screen shows the essentials, work comes
+   before the intro, results before images, and every link is easy to tap.
+   ------------------------------------------------------------------ */
+
+.only-phone {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .only-wide {
+    display: none;
+  }
+
+  .only-phone {
+    display: inline;
+  }
+
+  p.only-phone {
+    display: block;
+  }
+
+  /* Work before the intro. */
+  .home-flow {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-flow > .intro-band {
+    order: 1;
+    margin-top: var(--room-gap);
+  }
+
+  .home-flow > .rooms ~ * {
+    order: 2;
+  }
+
+  /* First screen: small portrait beside the name, then the essentials. */
+  .hero.has-photo {
+    grid-template-columns: 84px minmax(0, 1fr);
+    column-gap: 16px;
+    row-gap: 0;
+    align-items: start;
+    padding-top: 48px;
+    padding-bottom: 32px;
+  }
+
+  .hero .portrait-ring {
+    width: 84px;
+    border-width: 5px;
+    padding: 2px;
+  }
+
+  .hero .hero-text {
+    display: contents;
+  }
+
+  .hero h1 {
+    grid-column: 2;
+    align-self: center;
+    font-size: 38px;
+    margin: 0;
+  }
+
+  .hero h1 ~ * {
+    grid-column: 1 / -1;
+  }
+
+  .hero .disciplines {
+    margin-top: 16px;
+    font-size: 17px;
+  }
+
+  .hero .tagline {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .hero .hero-tools {
+    display: none;
+  }
+
+  .hero .experience {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .availability {
+    margin-bottom: 12px;
+  }
+
+  /* Project cards: name, headline and result first, then a short image. */
+  .project-row .label {
+    order: 0;
+  }
+
+  .project-row .headline {
+    order: 1;
+  }
+
+  .project-row .results,
+  .project-row .summary {
+    order: 2;
+  }
+
+  .project-row .thumb {
+    order: 3;
+    margin: 4px 0 6px;
+  }
+
+  .project-row .button {
+    order: 4;
+  }
+
+  .project-row .thumb img {
+    aspect-ratio: 2.2 / 1;
+  }
+
+  .project-row .diagram-thumb {
+    max-height: 150px;
+  }
+
+  /* Smaller big type. */
+  .project-head .lead {
+    font-size: 30px;
+  }
+
+  .intro-text p:first-child {
+    font-size: 22px;
+  }
+
+  /* Tap targets of 44px for the small links. */
+  .service-link,
+  .contact-list a,
+  .credentials-minor a {
+    display: inline-block;
+    padding: 11px 0;
+  }
+
+  .contact-list div {
+    padding: 4px 0;
+  }
+}

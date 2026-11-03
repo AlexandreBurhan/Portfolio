@@ -48,7 +48,7 @@ export default function RootLayout({ children }) {
                 <Link href="/#work">Work</Link>
               </li>
               <li>
-                <Link href="/#what-i-do">Services</Link>
+                <Link href="/#what-i-do">What I do</Link>
               </li>
               <li>
                 <Link href="/about/">About</Link>

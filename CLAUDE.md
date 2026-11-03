@@ -65,10 +65,13 @@ Operations Analyst and Automation roles (recruiters second). Site language: Engl
 - Figures and certificate images open full screen on click
   (`components/ZoomImage.js`), growing from where they sit. These two, hover
   and press feedback are the only motion; all of it respects reduced motion.
-- Phones: pages scroll one way only. Projects are compact cards (no summary),
-  What I do is a short list, the intro shows one paragraph and "Read more",
-  Tools and Background are hidden, and case-study sections after the first two
-  fold under their heading (`components/Fold.js`). The resume is a hero button.
+- Phones: pages scroll one way only. The first screen holds a small portrait
+  beside the name, the availability line and both buttons (short texts from
+  `availabilityShort` / `experienceShort`). Work comes before the intro.
+  Project cards read name, headline, first result, then a short image. What I
+  do is a short list, Tools and Background are hidden, and case-study sections
+  after the first two fold under their heading (`components/Fold.js`). The tab
+  bar holds Home, Work, What I do, CV and Contact.
 - Diagrams are HTML components (`components/diagrams/`), not images, so they
   reflow at phone width.
 

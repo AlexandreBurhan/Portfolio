@@ -9,6 +9,9 @@ const site = {
   heroTools: ['SQL', 'BigQuery', 'Python', 'Make', 'Apps Script'],
   // One line under the tagline: what I am looking for, where, and my right to work.
   availability: ['Open to Data Analyst, Operations Analyst and Automation roles', 'Barcelona or relocation', 'EU citizen'],
+  // Phone versions of the availability and experience lines.
+  availabilityShort: ['Open to Data & Ops Analyst roles', 'Barcelona or relocation', 'EU citizen'],
+  experienceShort: ['2 years full-time + internships', 'Canal+', 'Air France KLM', 'papernest'],
   experience: [
     '2 years full-time plus a year of internships, in France, the United States and Spain',
     'Canal+',

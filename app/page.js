@@ -57,7 +57,7 @@ function ProjectRow({ project }) {
 
 export default function Home() {
   return (
-    <>
+    <div className="home-flow">
       <section className={`intro hero${site.photo?.src ? ' has-photo' : ''}`} aria-labelledby="name">
         {site.photo?.src && (
           <div className="portrait-ring">
@@ -74,16 +74,22 @@ export default function Home() {
           {site.availability?.length > 0 && (
             <p className="availability">
               <span className="availability-dot" aria-hidden="true" />
-              <span>
+              <span className="only-wide">
                 <Separated items={site.availability} />
+              </span>
+              <span className="only-phone">
+                <Separated items={site.availabilityShort || site.availability} />
               </span>
             </p>
           )}
           <p className="hero-tools">
             <Separated items={site.heroTools} />
           </p>
-          <p className="experience">
+          <p className="experience only-wide">
             <Separated items={site.experience} />
+          </p>
+          <p className="experience only-phone">
+            <Separated items={site.experienceShort || site.experience} />
           </p>
           <div className="hero-actions">
           <a className="button primary" href="#work">
@@ -285,6 +291,6 @@ export default function Home() {
           </div>
         </dl>
       </section>
-    </>
+    </div>
   );
 }
