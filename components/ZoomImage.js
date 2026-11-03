@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 
 // An image that grows to fill the screen when clicked, starting from where it
 // sits on the page, and shrinks back on close (click, Escape or the button).
-// The overlay is mounted on <html>, outside the zoomed <body>, so its size and
+// The overlay is mounted on <html>, outside <body>, so its size and
 // position are plain viewport pixels.
 const EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
 

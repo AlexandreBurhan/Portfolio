@@ -110,19 +110,6 @@ html {
   scroll-padding-top: calc(var(--nav-h) + 16px);
 }
 
-/* The whole site reads larger on computer screens: the same as zooming the
-   browser two steps (110%, then 125%). Phones keep their own scale. */
-@media (min-width: 1000px) {
-  body {
-    zoom: 1.1;
-  }
-}
-
-@media (min-width: 1280px) {
-  body {
-    zoom: 1.25;
-  }
-}
 
 body {
   margin: 0;
