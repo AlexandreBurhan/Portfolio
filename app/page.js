@@ -107,6 +107,18 @@ export default function Home() {
         </div>
       </section>
 
+
+      <section className="rooms" id="work" aria-labelledby="work-heading">
+        <h2 className="display-heading work-heading" id="work-heading">
+          Selected work
+        </h2>
+        <ReadMore className="project-track" more={`Show all ${heroProjects.length} projects`} less="Show fewer">
+          {heroProjects.map((project) => (
+            <ProjectRow key={project.slug} project={project} />
+          ))}
+        </ReadMore>
+      </section>
+
       <section className={`band intro-band${site.cv ? ' has-resume' : ''}`} aria-label="Introduction">
         <ReadMore className="intro-text prose">
           <Paragraphs items={site.intro} />
@@ -123,17 +135,6 @@ export default function Home() {
             </a>
           </aside>
         )}
-      </section>
-
-      <section className="rooms" id="work" aria-labelledby="work-heading">
-        <h2 className="display-heading work-heading" id="work-heading">
-          Selected work
-        </h2>
-        <ReadMore className="project-track" more={`Show all ${heroProjects.length} projects`} less="Show fewer">
-          {heroProjects.map((project) => (
-            <ProjectRow key={project.slug} project={project} />
-          ))}
-        </ReadMore>
       </section>
 
       {site.services.length > 0 && (

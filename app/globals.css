@@ -580,7 +580,7 @@ code {
 }
 
 .intro-band {
-  margin-top: 0;
+  margin-top: var(--room-gap);
 }
 
 .service-list {
@@ -2172,21 +2172,6 @@ li {
 
   p.only-phone {
     display: block;
-  }
-
-  /* Work before the intro. */
-  .home-flow {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .home-flow > .intro-band {
-    order: 1;
-    margin-top: var(--room-gap);
-  }
-
-  .home-flow > .rooms ~ * {
-    order: 2;
   }
 
   /* First screen: small portrait beside the name, then the essentials. */
