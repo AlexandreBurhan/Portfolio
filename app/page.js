@@ -6,6 +6,7 @@ import Label from '../components/Label';
 import { DIAGRAMS } from '../components/Figure';
 import Separated from '../components/Separated';
 import { Paragraphs } from '../components/RichText';
+import ZoomImage from '../components/ZoomImage';
 
 // One row per project: the screenshot on the left, the label and the case on
 // the right. Diagram covers have no image, so a project can name a `thumb`.
@@ -195,8 +196,7 @@ export default function Home() {
             {site.credentials.map((c) => (
               <li key={`${c.title}-${c.year}`} className={c.image ? '' : 'no-image'}>
                 {c.image && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={asset(c.image.src)} alt="" width={c.image.width} height={c.image.height} loading="lazy" decoding="async" />
+                  <ZoomImage src={asset(c.image.src)} alt={`Certificate: ${c.title}`} width={c.image.width} height={c.image.height} />
                 )}
                 <div>
                   <p className="cred-title">{c.title}</p>

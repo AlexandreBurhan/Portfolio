@@ -58,6 +58,13 @@ Data Analyst, Operations Analyst and Automation roles. Site language: English.
   content. Exception: the "Education and certifications" list may show a
   small image of each certificate next to its name, issuer and year
   (`site.credentials`).
+- Phones get an iOS-style tab bar at the bottom (`components/MobileTabBar.js`):
+  floating glass, a highlight that slides to the active tab, the tab following
+  the section in view on the home page. It replaces the top links on phones;
+  the top keeps only the light / dark switch.
+- Figures and certificate images open full screen on click
+  (`components/ZoomImage.js`), growing from where they sit. These two, hover
+  and press feedback are the only motion; all of it respects reduced motion.
 - Diagrams are HTML components (`components/diagrams/`), not images, so they
   reflow at phone width.
 

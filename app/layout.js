@@ -4,6 +4,7 @@ import Link from 'next/link';
 import site from '../content/site';
 import Separated from '../components/Separated';
 import ThemeToggle from '../components/ThemeToggle';
+import MobileTabBar from '../components/MobileTabBar';
 
 export const metadata = {
   title: {
@@ -17,6 +18,7 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: '#13233a',
+  viewportFit: 'cover',
 };
 
 const THEME_SCRIPT = `try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){}`;
@@ -59,6 +61,7 @@ export default function RootLayout({ children }) {
             </ul>
           </nav>
         </header>
+        <MobileTabBar />
         <main id="main" className="wrap">
           {children}
         </main>

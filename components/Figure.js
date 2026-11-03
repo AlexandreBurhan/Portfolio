@@ -2,6 +2,7 @@ import SaturdayTimeline from './diagrams/SaturdayTimeline';
 import { asset } from './asset';
 import SessionCount from './diagrams/SessionCount';
 import { Inline } from './RichText';
+import ZoomImage from './ZoomImage';
 
 export const DIAGRAMS = {
   'saturday-timeline': SaturdayTimeline,
@@ -32,16 +33,8 @@ export default function Figure({ figure, className = '' }) {
             <source src={asset(figure.video)} type={figure.video.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
           </video>
         ) : (
-          // Static export: plain img, dimensions come from the file.
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={asset(figure.src)}
-            alt={figure.alt}
-            width={figure.width}
-            height={figure.height}
-            loading="lazy"
-            decoding="async"
-          />
+          // Static export: plain img. Click to see it full screen.
+          <ZoomImage src={asset(figure.src)} alt={figure.alt} width={figure.width} height={figure.height} />
         )}
       </div>
       {figure.caption && (
