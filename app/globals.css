@@ -725,6 +725,33 @@ code {
 @media (max-width: 760px) {
   .project-row {
     grid-template-columns: minmax(0, 1fr);
+    row-gap: 12px;
+  }
+
+  /* Phones: the project name comes first, so the image makes sense at once.
+     The text block opens up so its label can move above the image. */
+  .project-row .row-body {
+    display: contents;
+  }
+
+  .project-row .label {
+    order: -1;
+  }
+
+  .project-row .thumb {
+    margin-bottom: 4px;
+  }
+
+  .project-row .headline {
+    margin: 0;
+  }
+
+  .project-row .summary {
+    margin: 0 0 8px;
+  }
+
+  .project-row .button {
+    justify-self: start;
   }
 }
 
