@@ -640,6 +640,16 @@ const projects = [
         ],
       },
       {
+        type: 'figure',
+        figure: {
+          src: '/images/job-agent-results.jpg',
+          width: 1600,
+          height: 1000,
+          alt: 'The results page: applications sent, reply rate, interviews, refusals, applications with no reply and median salary asked, a few one-line findings, then bars for the funnel from sent to offer, refusals by stage, a table by city and the spread of salaries asked.',
+          caption: 'The results page on demo data. Reply rate, interviews, refusals by stage, a breakdown by city and the salaries asked, all updated from the mailbox.',
+        },
+      },
+      {
         heading: 'The dashboard',
         type: 'prose',
         body: [
