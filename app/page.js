@@ -7,6 +7,7 @@ import { DIAGRAMS } from '../components/Figure';
 import Separated from '../components/Separated';
 import { Paragraphs } from '../components/RichText';
 import ZoomImage from '../components/ZoomImage';
+import ReadMore from '../components/ReadMore';
 
 // One row per project: the screenshot on the left, the label and the case on
 // the right. Diagram covers have no image, so a project can name a `thumb`.
@@ -66,19 +67,26 @@ export default function Home() {
           <p className="experience">
             <Separated items={site.experience} />
           </p>
+          <div className="hero-actions">
           <a className="button primary" href="#work">
             See my work
             <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
               <path d="M8 2v11M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
             </svg>
           </a>
+            {site.cv && (
+              <a className="button" href={asset(site.cv)}>
+                View resume
+              </a>
+            )}
+          </div>
         </div>
       </section>
 
       <section className={`band intro-band${site.cv ? ' has-resume' : ''}`} aria-label="Introduction">
-        <div className="intro-text prose">
+        <ReadMore className="intro-text prose">
           <Paragraphs items={site.intro} />
-        </div>
+        </ReadMore>
         {site.cv && (
           <aside className="resume-card" aria-labelledby="resume-heading">
             <p className="eyebrow">Resume</p>
@@ -126,11 +134,11 @@ export default function Home() {
         <h2 className="display-heading work-heading" id="work-heading">
           Selected work
         </h2>
-        <div className="project-track">
+        <ReadMore className="project-track" more={`Show all ${heroProjects.length} projects`} less="Show fewer">
           {heroProjects.map((project) => (
             <ProjectRow key={project.slug} project={project} />
           ))}
-        </div>
+        </ReadMore>
       </section>
 
       {secondaryProjects.length > 0 && (
@@ -163,7 +171,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="block" aria-labelledby="tools-heading">
+      <section className="block mobile-hide" aria-labelledby="tools-heading">
         <h2 className="eyebrow" id="tools-heading">
           Tools
         </h2>
@@ -179,7 +187,7 @@ export default function Home() {
         </dl>
       </section>
 
-      <section className="block background prose" aria-labelledby="bg-heading">
+      <section className="block background prose mobile-hide" aria-labelledby="bg-heading">
         <h2 className="eyebrow" id="bg-heading">
           Before workforce management
         </h2>

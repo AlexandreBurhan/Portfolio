@@ -5,6 +5,7 @@ import Figure from '../../../components/Figure';
 import Section from '../../../components/Section';
 import Separated from '../../../components/Separated';
 import { Inline } from '../../../components/RichText';
+import Fold from '../../../components/Fold';
 
 export const dynamicParams = false;
 
@@ -17,6 +18,16 @@ export async function generateMetadata({ params }) {
   const project = getProject(slug);
   if (!project) return {};
   return { title: project.title, description: project.headline };
+}
+
+// A heading starts a group; the figures, tables and notes that follow belong to it.
+function groupSections(sections) {
+  const groups = [];
+  for (const section of sections) {
+    if (section.heading || groups.length === 0) groups.push({ title: section.heading || '', sections: [] });
+    groups[groups.length - 1].sections.push(section);
+  }
+  return groups;
 }
 
 export default async function ProjectPage({ params }) {
@@ -41,6 +52,7 @@ export default async function ProjectPage({ params }) {
           <Separated items={[project.year, project.stack.join(', ')]} />
         </p>
         <p className="lead">{project.headline}</p>
+        {project.summary && <p className="project-summary">{project.summary}</p>}
         {(demo || code) && (
           <div className="project-links">
             {demo && (
@@ -72,9 +84,22 @@ export default async function ProjectPage({ params }) {
         </section>
       )}
 
-      {project.sections.map((section, i) => (
-        <Section key={i} section={section} />
-      ))}
+      {groupSections(project.sections).map((group, g) =>
+        // The first two groups stay open on phones; the rest fold under their heading.
+        g < 2 || !group.title ? (
+          <div key={g}>
+            {group.sections.map((section, i) => (
+              <Section key={i} section={section} />
+            ))}
+          </div>
+        ) : (
+          <Fold key={g} title={group.title}>
+            {group.sections.map((section, i) => (
+              <Section key={i} section={section} />
+            ))}
+          </Fold>
+        ),
+      )}
 
       <nav className="project-pager" aria-label="More projects">
         {prev ? (
